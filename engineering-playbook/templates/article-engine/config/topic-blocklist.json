@@ -1,0 +1,17 @@
+{
+  "_comment": "Deterministic backstop for the idea generator. Any AI-generated topic whose text matches a pattern (case-insensitive regex) is dropped BEFORE scoring, no matter what the model produces. The self-critique premise gate in src/llm_ideas.js is the primary filter; this is the belt-and-suspenders list for premises we have already judged false/nonsensical. Add an entry whenever you catch another bad-premise pattern.",
+  "banned": [
+    {
+      "pattern": "certification.*(transfer|transfers|sold|sale|buyer|gap|purchase|closing)|(transfer|transfers|sold|sale|buyer|gap|purchase|closing).*certification",
+      "reason": "A personal certification is a credential of the individual who earned it; it does not transfer in a sale, so any 'transfer/gap' framing is a false premise."
+    },
+    {
+      "pattern": "renewal.*(transfer|sale|sold|buyer|gap|purchase|closing)|(transfer|sale|sold|buyer|gap|purchase|closing).*renewal",
+      "reason": "A personal renewal obligation stays with the individual; it is not a transferable item between buyer and seller."
+    },
+    {
+      "pattern": "starter kit",
+      "reason": "Framing a 'starter kit' as a distinct alternative to a standard onboarding package is a false dichotomy in Yourniche; they describe the same thing."
+    }
+  ]
+}

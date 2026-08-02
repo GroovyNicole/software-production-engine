@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "_comment": "Replace every .example domain. moat_authority is the only tier allowed to support Lane-B-specific claims. general_authority supports broad claims. ideation_only may inspire topics but may never verify an article claim.",
+  "moat_authority": [
+    "authority.yourniche.example",
+    "regulator.yourniche.example"
+  ],
+  "general_authority": [
+    "official.example",
+    "standards.example",
+    "data.example"
+  ],
+  "ideation_only": []
+}

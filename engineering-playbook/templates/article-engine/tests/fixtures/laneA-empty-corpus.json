@@ -1,0 +1,22 @@
+{
+  "name": "laneA-empty-corpus",
+  "note": "Lane-A general topic with NO corpus available → must produce a valid explanatory article with zero citations.",
+  "topic": {
+    "id": "what-is-z-and-when-do-you-need-it",
+    "topic": "what is z and when do you need it",
+    "cluster": "getting_started",
+    "lane": "A",
+    "score": 0.531,
+    "grounding_authority": [],
+    "sources": ["autocomplete"]
+  },
+  "corpus_ids_available": [],
+  "expect": {
+    "mode_in": ["informational", "pitfall"],
+    "word_count_range": [700, 1300],
+    "must_end_with_disclaimer": true,
+    "used_authority_subset_of": [],
+    "needs_grounding": false,
+    "no_unverified_citations": true
+  }
+}

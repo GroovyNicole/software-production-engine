@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "customized": false,
+  "brand": {
+    "name": "[FIRM]",
+    "field": "[FIELD]",
+    "audience": "[AUDIENCE]",
+    "moat_label": "Yourniche",
+    "professional_label": "[FIELD] professional",
+    "consultation_label": "consultation",
+    "voice_exemplars_file": "config/voice-exemplars.txt"
+  },
+  "content": {
+    "min_words": 900,
+    "max_words": 1300,
+    "disclaimer": "This article is general information for [AUDIENCE], not professional advice, and does not create a professional-client relationship. Details change and every situation is different. Consult a qualified [PROFESSIONAL] about your specific circumstances."
+  },
+  "scope": {
+    "in_scope": [
+      "EXAMPLE: decisions and recurring questions the brand's actual service helps readers answer"
+    ],
+    "out_of_scope": [
+      "EXAMPLE: adjacent services the brand does not provide",
+      "breaking news",
+      "specialist-to-specialist or academic material"
+    ],
+    "excluded_terms": [],
+    "excluded_geographies": []
+  },
+  "clusters": [
+    { "id": "getting_started", "label": "Getting started", "description": "Foundational what-is and where-do-I-begin decisions", "practice_value": 0.55 },
+    { "id": "choosing", "label": "Choosing", "description": "Comparisons and either-or decisions", "practice_value": 0.75 },
+    { "id": "process", "label": "Process", "description": "How the work happens step by step", "practice_value": 0.65 },
+    { "id": "cost", "label": "Cost and value", "description": "Pricing, budget, value, and return decisions", "practice_value": 0.7 },
+    { "id": "pitfalls", "label": "Pitfalls", "description": "Mistakes, risks, and avoidable failures", "practice_value": 0.8 },
+    { "id": "standards", "label": "Standards", "description": "Requirements, rules, and field best practices", "practice_value": 0.85 },
+    { "id": "advanced", "label": "Advanced", "description": "Specialized, edge-case, or high-stakes decisions", "practice_value": 0.9 },
+    { "id": "planning", "label": "Planning", "description": "Long-term, ongoing, and future-proofing decisions", "practice_value": 0.8 }
+  ],
+  "ideation": {
+    "moat_terms": ["Yourniche"],
+    "example_titles": [
+      "How Do You Do X Without Creating a Mess?",
+      "What Is Z and When Do You Need It?",
+      "Should You Choose X or Y?",
+      "Why Z Fails in Yourniche"
+    ],
+    "published_topics": [],
+    "stack_exchange_searches": [
+      { "site": "money", "query": "getting started basics", "cluster": "getting_started" },
+      { "site": "money", "query": "how to choose between options", "cluster": "choosing" }
+    ]
+  }
+}

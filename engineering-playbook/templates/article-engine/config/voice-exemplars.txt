@@ -1,0 +1,8 @@
+PASTE TWO OR THREE REAL, APPROVED ARTICLES HERE.
+
+Use a line containing four hyphens between articles:
+
+----
+
+The engine uses these examples to learn cadence and tone. Remove these instructions when you add real
+examples. Do not paste competitor articles, confidential material, or text you do not have permission to use.

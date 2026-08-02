@@ -1,0 +1,17 @@
+# secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# node
+node_modules/
+
+# local editor / OS
+.DS_Store
+*.log
+
+# generated output
+output/
+
+# throwaway clean reading-copies (article body only; not a pipeline artifact)
+*.READABLE.md

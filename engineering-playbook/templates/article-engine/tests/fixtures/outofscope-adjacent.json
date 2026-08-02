@@ -1,0 +1,17 @@
+{
+  "name": "outofscope-adjacent",
+  "note": "Out-of-scope topic (clearly outside the example field) that slipped through → the writer must SKIP it, never draft.",
+  "topic": {
+    "id": "what-is-the-best-recipe-for-sourdough-bread",
+    "topic": "what is the best recipe for sourdough bread",
+    "cluster": "process",
+    "lane": "A",
+    "score": 0.5,
+    "grounding_authority": [],
+    "sources": ["autocomplete"]
+  },
+  "corpus_ids_available": [],
+  "expect": {
+    "skip": true
+  }
+}

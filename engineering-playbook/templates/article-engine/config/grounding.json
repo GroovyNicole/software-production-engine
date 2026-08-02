@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "_note": "EXAMPLE authority corpus — replace with YOUR field's real authorities. This is the accuracy rail AND the moat (see ARCHITECTURE.md §5). Every entry ships verified_by:'unverified' and CANNOT be cited by the writer until a human confirms the exact citation text + source_url and flips verified_by to 'human'. Entries with a blank citation can never be printed even after verification. Do not invent citation numbers here.",
+  "authorities": [
+    {
+      "id": "ex-planning",
+      "citation": "Yourniche Code § 42",
+      "jurisdiction": "Yourniche",
+      "topic_tags": ["planning", "advanced"],
+      "summary": "EXAMPLE: a plain-language statement of a long-term/planning rule the writer may paraphrase. Replace with a real, verified rule from your field's authoritative source.",
+      "source_url": "https://authority.yourniche.example/example-planning",
+      "verified_on": "2026-01-01",
+      "verified_by": "unverified"
+    },
+    {
+      "id": "ex-standard",
+      "citation": "Yourniche Rule § 12",
+      "jurisdiction": "Yourniche",
+      "topic_tags": ["standards", "process"],
+      "summary": "EXAMPLE: a requirement/best-practice rule. Replace with your field's actual authoritative source and a plain-language summary of what it requires.",
+      "source_url": "https://authority.yourniche.example/example-standard",
+      "verified_on": "2026-01-01",
+      "verified_by": "unverified"
+    },
+    {
+      "id": "form-12",
+      "citation": "Form 12",
+      "jurisdiction": "US",
+      "topic_tags": ["getting_started", "choosing"],
+      "summary": "EXAMPLE (general): a named form or spec a reader files or follows to get set up. General examples like this can stay as-is; add your own field-specific entries alongside them.",
+      "source_url": "https://official.example/about-form-12",
+      "verified_on": "2026-01-01",
+      "verified_by": "unverified"
+    },
+    {
+      "id": "ex-blank",
+      "citation": "",
+      "jurisdiction": "Yourniche",
+      "topic_tags": ["cost"],
+      "summary": "EXAMPLE with a BLANK citation: a cost/pricing rule where the exact section is not yet confirmed. A blank citation can NEVER be printed even after verification — verify the exact section first. CITE TO CONFIRM.",
+      "source_url": "https://authority.yourniche.example/",
+      "verified_on": "2026-01-01",
+      "verified_by": "unverified"
+    }
+  ]
+}

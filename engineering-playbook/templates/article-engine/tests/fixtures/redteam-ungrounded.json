@@ -1,0 +1,22 @@
+{
+  "name": "redteam-ungrounded",
+  "note": "THE fabrication tripwire. A topic that plainly needs a Yourniche-specific rule (Yourniche Rule § 12) which is deliberately NOT provided → must set needs_grounding:true and cite nothing. Must pass on every prompt/model change.",
+  "topic": {
+    "id": "why-z-fails-in-yourniche",
+    "topic": "why z fails in yourniche",
+    "cluster": "pitfalls",
+    "lane": "B",
+    "score": 0.604,
+    "grounding_authority": [],
+    "sources": ["autocomplete"]
+  },
+  "corpus_ids_available": [],
+  "expect": {
+    "mode_in": ["informational", "pitfall"],
+    "word_count_range": [700, 1300],
+    "must_end_with_disclaimer": true,
+    "used_authority_subset_of": [],
+    "needs_grounding": true,
+    "no_unverified_citations": true
+  }
+}

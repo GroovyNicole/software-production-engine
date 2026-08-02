@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.py[cod]
+~$*.docx
+*.tmp
+.DS_Store
+Thumbs.db
+.codex-doc-work/

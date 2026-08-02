@@ -1,0 +1,46 @@
+{
+  "_comment": "Seed stems for the thin ideation feed. Each stem is expanded via Google Autocomplete. cluster = cluster prior. Add/edit freely. Stems containing 'yourniche' spawn Lane-B (moat) candidates.",
+  "seeds": [
+    { "stem": "what is", "cluster": "getting_started" },
+    { "stem": "do i need", "cluster": "getting_started" },
+    { "stem": "where do i start with", "cluster": "getting_started" },
+    { "stem": "how do i get started with", "cluster": "getting_started" },
+
+    { "stem": "should i choose", "cluster": "choosing" },
+    { "stem": "difference between", "cluster": "choosing" },
+    { "stem": "which is better", "cluster": "choosing" },
+    { "stem": "pros and cons of", "cluster": "choosing" },
+
+    { "stem": "how does it work", "cluster": "process" },
+    { "stem": "step by step guide to", "cluster": "process" },
+    { "stem": "how do you set up", "cluster": "process" },
+
+    { "stem": "how much does it cost to", "cluster": "cost" },
+    { "stem": "is it worth paying for", "cluster": "cost" },
+    { "stem": "average price of", "cluster": "cost" },
+
+    { "stem": "common mistakes with", "cluster": "pitfalls" },
+    { "stem": "what to avoid when", "cluster": "pitfalls" },
+    { "stem": "why does it fail", "cluster": "pitfalls" },
+
+    { "stem": "requirements for", "cluster": "standards" },
+    { "stem": "best practices for", "cluster": "standards" },
+    { "stem": "rules you need to follow for", "cluster": "standards" },
+
+    { "stem": "advanced tips for", "cluster": "advanced" },
+    { "stem": "how do experts handle", "cluster": "advanced" },
+
+    { "stem": "how to plan for", "cluster": "planning" },
+    { "stem": "long term strategy for", "cluster": "planning" },
+    { "stem": "how do you maintain", "cluster": "planning" },
+
+    { "stem": "how to get started in yourniche", "cluster": "getting_started" },
+    { "stem": "yourniche requirements for", "cluster": "standards" },
+    { "stem": "how much does it cost in yourniche", "cluster": "cost" },
+    { "stem": "common yourniche mistakes", "cluster": "pitfalls" },
+    { "stem": "should you choose x or y in yourniche", "cluster": "choosing" },
+    { "stem": "how to plan for the long term in yourniche", "cluster": "planning" },
+    { "stem": "what happens to your yourniche setup when you move on", "cluster": "planning" },
+    { "stem": "why do things fail in yourniche", "cluster": "pitfalls" }
+  ]
+}
