@@ -94,11 +94,26 @@ def run(root: Path, config: dict, changed: dict[str, set[int]] | None,
         for gate_id in enabled:
             if is_exempt(path, gate_id, configs):
                 continue
-            for finding in REGISTRY[gate_id].scan(path, rel_path):
+            scan_file = getattr(REGISTRY[gate_id], "scan", None)
+            if scan_file is None:
+                continue  # repo-level gate; handled after the file walk
+            for finding in scan_file(path, rel_path):
                 # In changed-only mode a finding counts only if it sits on a changed line.
                 # Pre-existing findings in an untouched region are backlog, not regression.
                 if changed is not None and finding.line not in changed.get(rel_path, ()):
                     continue
+                result.add(finding)
+
+    # Repo-level gates run once over the whole tree. Some properties — whether tests are
+    # actually wired to a runner, whether routes have declared authorization, whether
+    # specification has outrun implementation — are invisible file by file and only exist
+    # as facts about the project as a whole.
+    if changed is None:  # a diff-scoped run cannot judge whole-repo properties
+        for gate_id in enabled:
+            scan_repo = getattr(REGISTRY[gate_id], "scan_repo", None)
+            if scan_repo is None:
+                continue
+            for finding in scan_repo(root):
                 result.add(finding)
 
     return result
