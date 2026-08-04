@@ -348,6 +348,84 @@ class TestEveryRegisteredGateActuallyRuns(unittest.TestCase):
                              "a registered gate did not run under the default config")
 
 
+class TestEndToEnd(unittest.TestCase):
+    """Run the tool the way a person runs it: point it at a folder, read what comes out.
+
+    Every other test in this file calls a check directly. That leaves the wiring between
+    them untested, which is how two registered checks sat dormant while their own tests
+    passed. This test exercises the real path — discovery, config, exemptions, per-file
+    checks, repo-level checks, reporting — against a folder with known problems planted in
+    it, and asserts each one surfaces.
+    """
+
+    def setUp(self) -> None:
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+
+        (self.root / "app.py").write_text(
+            'import json\n'
+            'def wipe(c, cid):\n'
+            '    c.execute("DELETE FROM archive_messages WHERE id=?", (cid,))\n'
+            'def load(p):\n'
+            '    try:\n'
+            '        return json.loads(open(p).read())\n'
+            '    except ValueError:\n'
+            '        pass\n'
+            '# TODO: finish the importer\n',
+            encoding="utf-8")
+
+        (self.root / "huge.py").write_text(
+            "\n".join(f"x = {i}" for i in range(1600)), encoding="utf-8")
+
+        (self.root / "tests").mkdir()
+        (self.root / "tests" / "test_a.py").write_text("def test_a():\n    pass\n",
+                                                       encoding="utf-8")
+        (self.root / "package.json").write_text('{"name":"x","scripts":{"start":"node x"}}',
+                                                encoding="utf-8")
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _run(self):
+        from spe.cli import run
+        from spe.core import load_config
+        return run(self.root, load_config(self.root), None, "test")
+
+    def test_each_check_surfaces_its_planted_problem(self) -> None:
+        result = self._run()
+        found = {f.gate for f in result.findings}
+        for gate in ("delete-allowlist", "silent-failure", "hollowness",
+                     "module-size", "test-gate-wired"):
+            self.assertIn(gate, found, f"{gate} produced nothing on a folder that has "
+                                       f"exactly the problem it looks for")
+
+    def test_test_files_are_not_scanned(self) -> None:
+        result = self._run()
+        self.assertFalse([f for f in result.findings if f.file.startswith("tests/")],
+                         "test code should be out of scope for every check")
+
+    def test_report_renders_without_error(self) -> None:
+        from spe.core import render_report
+        text = render_report(self._run())
+        self.assertIn("SPE GATE RUN", text)
+        self.assertIn("delete-allowlist", text)
+
+    def test_clean_folder_produces_no_findings(self) -> None:
+        import tempfile
+        from spe.cli import run
+        from spe.core import load_config
+        with tempfile.TemporaryDirectory() as clean:
+            root = Path(clean)
+            (root / "ok.py").write_text(
+                'def add(a, b):\n'
+                '    """Return the sum."""\n'
+                '    return a + b\n', encoding="utf-8")
+            result = run(root, load_config(root), None, "test")
+            self.assertEqual(result.findings, [],
+                             f"false positives on clean code: {result.findings}")
+
+
 class TestExemptionAnchoring(unittest.TestCase):
     """DEFECT-001 regression.
 
