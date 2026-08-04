@@ -1,0 +1,28 @@
+{
+  "_note": "Config for scanning the runner itself. MANDATE.md 7.1 requires the runner to be subject to its own gates; this file records the only two places where that is impossible and says why.",
+  "exclude": [],
+  "gates": {
+    "delete-allowlist": {
+      "enabled": true,
+      "exempt": [
+        {
+          "path": "spe/gates/delete_allowlist.py",
+          "reason": "This file defines the deletion patterns, so it necessarily contains them. Every match here is a pattern definition, not a deletion."
+        }
+      ]
+    },
+    "silent-failure": {
+      "enabled": true,
+      "exempt": []
+    },
+    "hollowness": {
+      "enabled": true,
+      "exempt": [
+        {
+          "path": "spe/gates/hollowness.py",
+          "reason": "This file defines the hollowness markers and documents them in its docstring, so it necessarily contains them. Every match here is a pattern definition, not deferred work."
+        }
+      ]
+    }
+  }
+}

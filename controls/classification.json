@@ -1,0 +1,1207 @@
+{
+  "_note": "Non-automated classifications and planned enforcement. A control is never marked automated here — coverage.py derives that from gates that actually exist and declare it.",
+  "software": {
+    "1": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "2": {
+      "planned_enforcement": "automated",
+      "planned_gate": "tenant-isolation",
+      "requires_decision": false,
+      "family_note": "`tenant-isolation` — generated cross-tenant access tests; 404 not 403"
+    },
+    "3": {
+      "planned_enforcement": "automated",
+      "planned_gate": "secret-scan",
+      "requires_decision": false,
+      "family_note": "`secret-scan` — gitleaks equivalent"
+    },
+    "4": {
+      "planned_enforcement": "automated",
+      "planned_gate": "input-validation-coverage",
+      "requires_decision": false,
+      "family_note": "`input-validation-coverage` — every endpoint has a server-side schema; protected fields unbindable"
+    },
+    "5": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "6": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "recovery-evidence",
+      "requires_decision": false,
+      "family_note": "`recovery-evidence` — restore and rollback exercised, dated"
+    },
+    "7": {
+      "planned_enforcement": "automated",
+      "planned_gate": "destructive-action-guard",
+      "requires_decision": false,
+      "family_note": "`destructive-action-guard` — declared destructive actions carry scope, confirmation, reversibility"
+    },
+    "8": {
+      "planned_enforcement": "automated",
+      "planned_gate": "transaction-boundary",
+      "requires_decision": false,
+      "family_note": "`transaction-boundary` — multi-write operations bounded or compensated"
+    },
+    "9": {
+      "planned_enforcement": "automated",
+      "planned_gate": "idempotency",
+      "requires_decision": false,
+      "family_note": "`idempotency` — retryable operations carry keys; duplicate-request tests"
+    },
+    "10": {
+      "planned_enforcement": "automated",
+      "planned_gate": "idempotency",
+      "requires_decision": false,
+      "family_note": "`idempotency` — retryable operations carry keys; duplicate-request tests"
+    },
+    "11": {
+      "planned_enforcement": "automated",
+      "planned_gate": "server-derived-values",
+      "requires_decision": false,
+      "family_note": "`server-derived-values` — price, role, plan, ownership, entitlement never client-trusted"
+    },
+    "12": {
+      "planned_enforcement": "automated",
+      "planned_gate": "file-handling",
+      "requires_decision": false,
+      "family_note": "`file-handling` — upload restrictions, no public private storage, signed-URL expiry"
+    },
+    "13": {
+      "planned_enforcement": "automated",
+      "planned_gate": "rate-limit-coverage",
+      "requires_decision": false,
+      "family_note": "`rate-limit-coverage` — declared endpoints carry limits"
+    },
+    "14": {
+      "planned_enforcement": "automated",
+      "planned_gate": "server-derived-values",
+      "requires_decision": false,
+      "family_note": "`server-derived-values` — price, role, plan, ownership, entitlement never client-trusted"
+    },
+    "15": {
+      "planned_enforcement": "automated",
+      "planned_gate": "webhook-verification",
+      "requires_decision": false,
+      "family_note": "`webhook-verification` — signature, dedupe, out-of-order"
+    },
+    "16": {
+      "planned_enforcement": "automated",
+      "planned_gate": "silent-failure",
+      "requires_decision": false,
+      "family_note": "`silent-failure` — **built**"
+    },
+    "17": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "18": {
+      "planned_enforcement": "automated",
+      "planned_gate": "audit-trail-coverage",
+      "requires_decision": false,
+      "family_note": "`audit-trail-coverage` — declared consequential actions write audit rows"
+    },
+    "19": {
+      "planned_enforcement": "automated",
+      "planned_gate": "log-scrubbing",
+      "requires_decision": false,
+      "family_note": "`log-scrubbing` — classified fields never reach log calls"
+    },
+    "20": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "recovery-evidence",
+      "requires_decision": false,
+      "family_note": "`recovery-evidence` — restore and rollback exercised, dated"
+    },
+    "21": {
+      "planned_enforcement": "automated",
+      "planned_gate": "db-constraints",
+      "requires_decision": false,
+      "family_note": "`db-constraints` — required, unique, FK, ownership enforced in schema"
+    },
+    "22": {
+      "planned_enforcement": "automated",
+      "planned_gate": "db-constraints",
+      "requires_decision": false,
+      "family_note": "`db-constraints` — required, unique, FK, ownership enforced in schema"
+    },
+    "23": {
+      "planned_enforcement": "automated",
+      "planned_gate": "money-type",
+      "requires_decision": false,
+      "family_note": "`money-type` — no binary float on monetary values"
+    },
+    "24": {
+      "planned_enforcement": "automated",
+      "planned_gate": "time-canonical",
+      "requires_decision": false,
+      "family_note": "`time-canonical` — timezone-aware storage; DST tests where scheduling matters"
+    },
+    "25": {
+      "planned_enforcement": "automated",
+      "planned_gate": "time-canonical",
+      "requires_decision": false,
+      "family_note": "`time-canonical` — timezone-aware storage; DST tests where scheduling matters"
+    },
+    "26": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "27": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "28": {
+      "planned_enforcement": "automated",
+      "planned_gate": "migration-discipline",
+      "requires_decision": false,
+      "family_note": "`migration-discipline` — versioned, reversible, destructive migrations guarded"
+    },
+    "29": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "manual production schema change procedure"
+    },
+    "30": {
+      "planned_enforcement": "automated",
+      "planned_gate": "migration-discipline",
+      "requires_decision": false,
+      "family_note": "`migration-discipline` — versioned, reversible, destructive migrations guarded"
+    },
+    "31": {
+      "planned_enforcement": "automated",
+      "planned_gate": "delete-allowlist",
+      "requires_decision": true,
+      "family_note": "`delete-allowlist` — **built** — plus retention policy artifact"
+    },
+    "32": {
+      "planned_enforcement": "automated",
+      "planned_gate": "delete-allowlist",
+      "requires_decision": true,
+      "family_note": "`delete-allowlist` — **built** — plus retention policy artifact"
+    },
+    "33": {
+      "planned_enforcement": "automated",
+      "planned_gate": "delete-allowlist",
+      "requires_decision": true,
+      "family_note": "`delete-allowlist` — **built** — plus retention policy artifact"
+    },
+    "34": {
+      "planned_enforcement": "automated",
+      "planned_gate": "delete-allowlist",
+      "requires_decision": true,
+      "family_note": "`delete-allowlist` — **built** — plus retention policy artifact"
+    },
+    "35": {
+      "planned_enforcement": "automated",
+      "planned_gate": "delete-allowlist",
+      "requires_decision": true,
+      "family_note": "`delete-allowlist` — **built** — plus retention policy artifact"
+    },
+    "36": {
+      "planned_enforcement": "automated",
+      "planned_gate": "db-constraints",
+      "requires_decision": false,
+      "family_note": "`db-constraints` — required, unique, FK, ownership enforced in schema"
+    },
+    "37": {
+      "planned_enforcement": "automated",
+      "planned_gate": "db-constraints",
+      "requires_decision": false,
+      "family_note": "`db-constraints` — required, unique, FK, ownership enforced in schema"
+    },
+    "38": {
+      "planned_enforcement": "automated",
+      "planned_gate": "index-coverage",
+      "requires_decision": false,
+      "family_note": "`index-coverage` — query plans checked against realistic data"
+    },
+    "39": {
+      "planned_enforcement": "automated",
+      "planned_gate": "bounded-queries",
+      "requires_decision": false,
+      "family_note": "`bounded-queries` — no unbounded fetch; pagination on growing collections"
+    },
+    "40": {
+      "planned_enforcement": "automated",
+      "planned_gate": "bounded-queries",
+      "requires_decision": false,
+      "family_note": "`bounded-queries` — no unbounded fetch; pagination on growing collections"
+    },
+    "41": {
+      "planned_enforcement": "automated",
+      "planned_gate": "bounded-queries",
+      "requires_decision": false,
+      "family_note": "`bounded-queries` — no unbounded fetch; pagination on growing collections"
+    },
+    "42": {
+      "planned_enforcement": "automated",
+      "planned_gate": "canonical-source",
+      "requires_decision": true,
+      "family_note": "`canonical-source` — one authority per fact; conflict rule declared; version history"
+    },
+    "43": {
+      "planned_enforcement": "automated",
+      "planned_gate": "canonical-source",
+      "requires_decision": true,
+      "family_note": "`canonical-source` — one authority per fact; conflict rule declared; version history"
+    },
+    "44": {
+      "planned_enforcement": "automated",
+      "planned_gate": "canonical-source",
+      "requires_decision": true,
+      "family_note": "`canonical-source` — one authority per fact; conflict rule declared; version history"
+    },
+    "45": {
+      "planned_enforcement": "automated",
+      "planned_gate": "canonical-source",
+      "requires_decision": true,
+      "family_note": "`canonical-source` — one authority per fact; conflict rule declared; version history"
+    },
+    "46": {
+      "planned_enforcement": "automated",
+      "planned_gate": "canonical-source",
+      "requires_decision": true,
+      "family_note": "`canonical-source` — one authority per fact; conflict rule declared; version history"
+    },
+    "47": {
+      "planned_enforcement": "automated",
+      "planned_gate": "data-exchange",
+      "requires_decision": false,
+      "family_note": "`data-exchange` — export completeness, import validation, encoding round-trip"
+    },
+    "48": {
+      "planned_enforcement": "automated",
+      "planned_gate": "data-exchange",
+      "requires_decision": false,
+      "family_note": "`data-exchange` — export completeness, import validation, encoding round-trip"
+    },
+    "49": {
+      "planned_enforcement": "automated",
+      "planned_gate": "data-exchange",
+      "requires_decision": false,
+      "family_note": "`data-exchange` — export completeness, import validation, encoding round-trip"
+    },
+    "50": {
+      "planned_enforcement": "automated",
+      "planned_gate": "data-exchange",
+      "requires_decision": false,
+      "family_note": "`data-exchange` — export completeness, import validation, encoding round-trip"
+    },
+    "51": {
+      "planned_enforcement": "automated",
+      "planned_gate": "sast",
+      "requires_decision": false,
+      "family_note": "`sast` — injection, XSS, CSRF, unsafe redirect"
+    },
+    "52": {
+      "planned_enforcement": "automated",
+      "planned_gate": "sast",
+      "requires_decision": false,
+      "family_note": "`sast` — injection, XSS, CSRF, unsafe redirect"
+    },
+    "53": {
+      "planned_enforcement": "automated",
+      "planned_gate": "sast",
+      "requires_decision": false,
+      "family_note": "`sast` — injection, XSS, CSRF, unsafe redirect"
+    },
+    "54": {
+      "planned_enforcement": "automated",
+      "planned_gate": "sast",
+      "requires_decision": false,
+      "family_note": "`sast` — injection, XSS, CSRF, unsafe redirect"
+    },
+    "55": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "56": {
+      "planned_enforcement": "automated",
+      "planned_gate": "input-validation-coverage",
+      "requires_decision": false,
+      "family_note": "`input-validation-coverage` — every endpoint has a server-side schema; protected fields unbindable"
+    },
+    "57": {
+      "planned_enforcement": "automated",
+      "planned_gate": "input-validation-coverage",
+      "requires_decision": false,
+      "family_note": "`input-validation-coverage` — every endpoint has a server-side schema; protected fields unbindable"
+    },
+    "58": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-policy-conformance",
+      "requires_decision": false,
+      "family_note": "`auth-policy-conformance` — config asserted against ledger entries"
+    },
+    "59": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "admin-controls",
+      "requires_decision": false,
+      "family_note": "`admin-controls` — MFA, individual accounts, exposure"
+    },
+    "60": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "admin-controls",
+      "requires_decision": false,
+      "family_note": "`admin-controls` — MFA, individual accounts, exposure"
+    },
+    "61": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "admin-controls",
+      "requires_decision": false,
+      "family_note": "`admin-controls` — MFA, individual accounts, exposure"
+    },
+    "62": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-policy-conformance",
+      "requires_decision": false,
+      "family_note": "`auth-policy-conformance` — config asserted against ledger entries"
+    },
+    "63": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "credential rotation and review process"
+    },
+    "64": {
+      "planned_enforcement": "automated",
+      "planned_gate": "env-separation",
+      "requires_decision": false,
+      "family_note": "`env-separation` — distinct secrets, test-mode guards on real sends and charges"
+    },
+    "65": {
+      "planned_enforcement": "automated",
+      "planned_gate": "env-separation",
+      "requires_decision": false,
+      "family_note": "`env-separation` — distinct secrets, test-mode guards on real sends and charges"
+    },
+    "66": {
+      "planned_enforcement": "automated",
+      "planned_gate": "env-separation",
+      "requires_decision": false,
+      "family_note": "`env-separation` — distinct secrets, test-mode guards on real sends and charges"
+    },
+    "67": {
+      "planned_enforcement": "automated",
+      "planned_gate": "env-separation",
+      "requires_decision": false,
+      "family_note": "`env-separation` — distinct secrets, test-mode guards on real sends and charges"
+    },
+    "68": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "least-privilege review"
+    },
+    "69": {
+      "planned_enforcement": "automated",
+      "planned_gate": "file-handling",
+      "requires_decision": false,
+      "family_note": "`file-handling` — upload restrictions, no public private storage, signed-URL expiry"
+    },
+    "70": {
+      "planned_enforcement": "automated",
+      "planned_gate": "file-handling",
+      "requires_decision": false,
+      "family_note": "`file-handling` — upload restrictions, no public private storage, signed-URL expiry"
+    },
+    "71": {
+      "planned_enforcement": "automated",
+      "planned_gate": "file-handling",
+      "requires_decision": false,
+      "family_note": "`file-handling` — upload restrictions, no public private storage, signed-URL expiry"
+    },
+    "72": {
+      "planned_enforcement": "automated",
+      "planned_gate": "file-handling",
+      "requires_decision": false,
+      "family_note": "`file-handling` — upload restrictions, no public private storage, signed-URL expiry"
+    },
+    "73": {
+      "planned_enforcement": "automated",
+      "planned_gate": "dependency-scan",
+      "requires_decision": false,
+      "family_note": "`dependency-scan` — CVEs, lockfile discipline, update review"
+    },
+    "74": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "package provenance judgment"
+    },
+    "75": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "package provenance judgment"
+    },
+    "76": {
+      "planned_enforcement": "automated",
+      "planned_gate": "headers-cors",
+      "requires_decision": false,
+      "family_note": "`headers-cors` — live response assertions"
+    },
+    "77": {
+      "planned_enforcement": "automated",
+      "planned_gate": "headers-cors",
+      "requires_decision": false,
+      "family_note": "`headers-cors` — live response assertions"
+    },
+    "78": {
+      "planned_enforcement": "automated",
+      "planned_gate": "error-exposure",
+      "requires_decision": false,
+      "family_note": "`error-exposure` — no stack traces or raw DB errors to users"
+    },
+    "79": {
+      "planned_enforcement": "automated",
+      "planned_gate": "error-exposure",
+      "requires_decision": false,
+      "family_note": "`error-exposure` — no stack traces or raw DB errors to users"
+    },
+    "80": {
+      "planned_enforcement": "automated",
+      "planned_gate": "rate-limit-coverage",
+      "requires_decision": false,
+      "family_note": "`rate-limit-coverage` — declared endpoints carry limits"
+    },
+    "81": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "82": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-policy-conformance",
+      "requires_decision": false,
+      "family_note": "`auth-policy-conformance` — config asserted against ledger entries"
+    },
+    "83": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-policy-conformance",
+      "requires_decision": false,
+      "family_note": "`auth-policy-conformance` — config asserted against ledger entries"
+    },
+    "84": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "85": {
+      "planned_enforcement": "automated",
+      "planned_gate": "authz-coverage",
+      "requires_decision": false,
+      "family_note": "`authz-coverage` — route inventory reconciled against a declared permission matrix; deny-tests generated per DENY cell"
+    },
+    "86": {
+      "planned_enforcement": "automated",
+      "planned_gate": "test-coverage-matrix",
+      "requires_decision": false,
+      "family_note": "`test-coverage-matrix` — workflows, failure paths, permission boundaries, payments, deletion"
+    },
+    "87": {
+      "planned_enforcement": "automated",
+      "planned_gate": "test-coverage-matrix",
+      "requires_decision": false,
+      "family_note": "`test-coverage-matrix` — workflows, failure paths, permission boundaries, payments, deletion"
+    },
+    "88": {
+      "planned_enforcement": "automated",
+      "planned_gate": "test-coverage-matrix",
+      "requires_decision": false,
+      "family_note": "`test-coverage-matrix` — workflows, failure paths, permission boundaries, payments, deletion"
+    },
+    "89": {
+      "planned_enforcement": "automated",
+      "planned_gate": "test-coverage-matrix",
+      "requires_decision": false,
+      "family_note": "`test-coverage-matrix` — workflows, failure paths, permission boundaries, payments, deletion"
+    },
+    "90": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "91": {
+      "planned_enforcement": "automated",
+      "planned_gate": "idempotency",
+      "requires_decision": false,
+      "family_note": "`idempotency` — retryable operations carry keys; duplicate-request tests"
+    },
+    "92": {
+      "planned_enforcement": "automated",
+      "planned_gate": "test-coverage-matrix",
+      "requires_decision": false,
+      "family_note": "`test-coverage-matrix` — workflows, failure paths, permission boundaries, payments, deletion"
+    },
+    "93": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "recovery-evidence",
+      "requires_decision": false,
+      "family_note": "`recovery-evidence` — restore and rollback exercised, dated"
+    },
+    "94": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "95": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "96": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "97": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "98": {
+      "planned_enforcement": "automated",
+      "planned_gate": "silent-failure",
+      "requires_decision": false,
+      "family_note": "`silent-failure` — **built**"
+    },
+    "99": {
+      "planned_enforcement": "automated",
+      "planned_gate": "resilience",
+      "requires_decision": false,
+      "family_note": "`resilience` — long work out of request paths, bounded retries, explicit timeouts, containment"
+    },
+    "100": {
+      "planned_enforcement": "automated",
+      "planned_gate": "resilience",
+      "requires_decision": false,
+      "family_note": "`resilience` — long work out of request paths, bounded retries, explicit timeouts, containment"
+    },
+    "101": {
+      "planned_enforcement": "automated",
+      "planned_gate": "resilience",
+      "requires_decision": false,
+      "family_note": "`resilience` — long work out of request paths, bounded retries, explicit timeouts, containment"
+    },
+    "102": {
+      "planned_enforcement": "automated",
+      "planned_gate": "resilience",
+      "requires_decision": false,
+      "family_note": "`resilience` — long work out of request paths, bounded retries, explicit timeouts, containment"
+    },
+    "103": {
+      "planned_enforcement": "automated",
+      "planned_gate": "resilience",
+      "requires_decision": false,
+      "family_note": "`resilience` — long work out of request paths, bounded retries, explicit timeouts, containment"
+    },
+    "104": {
+      "planned_enforcement": "automated",
+      "planned_gate": "feature-independence",
+      "requires_decision": false,
+      "family_note": "`feature-independence` — each feature disabled in turn; app boots, others pass"
+    },
+    "105": {
+      "planned_enforcement": "automated",
+      "planned_gate": "feature-independence",
+      "requires_decision": false,
+      "family_note": "`feature-independence` — each feature disabled in turn; app boots, others pass"
+    },
+    "106": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "capacity and storage limits for the product model"
+    },
+    "107": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "capacity and storage limits for the product model"
+    },
+    "108": {
+      "planned_enforcement": "automated",
+      "planned_gate": "spend-bounds",
+      "requires_decision": false,
+      "family_note": "`spend-bounds` — expensive operations capped; budgets and alarms present"
+    },
+    "109": {
+      "planned_enforcement": "automated",
+      "planned_gate": "spend-bounds",
+      "requires_decision": false,
+      "family_note": "`spend-bounds` — expensive operations capped; budgets and alarms present"
+    },
+    "110": {
+      "planned_enforcement": "automated",
+      "planned_gate": "spend-bounds",
+      "requires_decision": false,
+      "family_note": "`spend-bounds` — expensive operations capped; budgets and alarms present"
+    },
+    "111": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "recovery-evidence",
+      "requires_decision": false,
+      "family_note": "`recovery-evidence` — restore and rollback exercised, dated"
+    },
+    "112": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "staged exposure and kill-switch policy"
+    },
+    "113": {
+      "planned_enforcement": "automated",
+      "planned_gate": "transaction-boundary",
+      "requires_decision": false,
+      "family_note": "`transaction-boundary` — multi-write operations bounded or compensated"
+    },
+    "114": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "staged exposure and kill-switch policy"
+    },
+    "115": {
+      "planned_enforcement": "automated",
+      "planned_gate": "migration-discipline",
+      "requires_decision": false,
+      "family_note": "`migration-discipline` — versioned, reversible, destructive migrations guarded"
+    },
+    "116": {
+      "planned_enforcement": "automated",
+      "planned_gate": "config-drift",
+      "requires_decision": false,
+      "family_note": "`config-drift` — detected or reconciled"
+    },
+    "117": {
+      "planned_enforcement": "automated",
+      "planned_gate": "dependency-scan",
+      "requires_decision": false,
+      "family_note": "`dependency-scan` — CVEs, lockfile discipline, update review"
+    },
+    "118": {
+      "planned_enforcement": "automated",
+      "planned_gate": "dependency-scan",
+      "requires_decision": false,
+      "family_note": "`dependency-scan` — CVEs, lockfile discipline, update review"
+    },
+    "119": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "deprecation and compatibility obligations"
+    },
+    "120": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "deprecation and compatibility obligations"
+    },
+    "121": {
+      "planned_enforcement": "automated",
+      "planned_gate": "error-path-parity",
+      "requires_decision": false,
+      "family_note": "`error-path-parity` — the effort floor; error branches tested, boundaries covered"
+    },
+    "122": {
+      "planned_enforcement": "automated",
+      "planned_gate": "destructive-action-guard",
+      "requires_decision": false,
+      "family_note": "`destructive-action-guard` — declared destructive actions carry scope, confirmation, reversibility"
+    },
+    "123": {
+      "planned_enforcement": "automated",
+      "planned_gate": "destructive-action-guard",
+      "requires_decision": false,
+      "family_note": "`destructive-action-guard` — declared destructive actions carry scope, confirmation, reversibility"
+    },
+    "124": {
+      "planned_enforcement": "automated",
+      "planned_gate": "success-honesty",
+      "requires_decision": false,
+      "family_note": "`success-honesty` — success reported only after success, or described as pending"
+    },
+    "125": {
+      "planned_enforcement": "automated",
+      "planned_gate": "idempotency",
+      "requires_decision": false,
+      "family_note": "`idempotency` — retryable operations carry keys; duplicate-request tests"
+    },
+    "126": {
+      "planned_enforcement": "automated",
+      "planned_gate": null,
+      "requires_decision": true,
+      "family_note": "input preservation policy"
+    },
+    "127": {
+      "planned_enforcement": "automated",
+      "planned_gate": null,
+      "requires_decision": true,
+      "family_note": "input preservation policy"
+    },
+    "128": {
+      "planned_enforcement": "automated",
+      "planned_gate": null,
+      "requires_decision": true,
+      "family_note": "input preservation policy"
+    },
+    "129": {
+      "planned_enforcement": "automated",
+      "planned_gate": null,
+      "requires_decision": true,
+      "family_note": "input preservation policy"
+    },
+    "130": {
+      "planned_enforcement": "automated",
+      "planned_gate": "account-lifecycle",
+      "requires_decision": true,
+      "family_note": "`account-lifecycle` — transfer, offboarding, invitations, permission invalidation"
+    },
+    "131": {
+      "planned_enforcement": "automated",
+      "planned_gate": "account-lifecycle",
+      "requires_decision": true,
+      "family_note": "`account-lifecycle` — transfer, offboarding, invitations, permission invalidation"
+    },
+    "132": {
+      "planned_enforcement": "automated",
+      "planned_gate": "account-lifecycle",
+      "requires_decision": true,
+      "family_note": "`account-lifecycle` — transfer, offboarding, invitations, permission invalidation"
+    },
+    "133": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "134": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "135": {
+      "planned_enforcement": "automated",
+      "planned_gate": "account-lifecycle",
+      "requires_decision": true,
+      "family_note": "`account-lifecycle` — transfer, offboarding, invitations, permission invalidation"
+    },
+    "136": {
+      "planned_enforcement": "automated",
+      "planned_gate": "auth-lifecycle-tests",
+      "requires_decision": false,
+      "family_note": "`auth-lifecycle-tests` — required test set exists and passes"
+    },
+    "137": {
+      "planned_enforcement": "automated",
+      "planned_gate": "account-lifecycle",
+      "requires_decision": true,
+      "family_note": "`account-lifecycle` — transfer, offboarding, invitations, permission invalidation"
+    },
+    "138": {
+      "planned_enforcement": "automated",
+      "planned_gate": "accessibility",
+      "requires_decision": false,
+      "family_note": "`accessibility` — automated axe-class checks plus state completeness"
+    },
+    "139": {
+      "planned_enforcement": "automated",
+      "planned_gate": "accessibility",
+      "requires_decision": false,
+      "family_note": "`accessibility` — automated axe-class checks plus state completeness"
+    },
+    "140": {
+      "planned_enforcement": "automated",
+      "planned_gate": "accessibility",
+      "requires_decision": false,
+      "family_note": "`accessibility` — automated axe-class checks plus state completeness"
+    },
+    "141": {
+      "planned_enforcement": "automated",
+      "planned_gate": "accessibility",
+      "requires_decision": false,
+      "family_note": "`accessibility` — automated axe-class checks plus state completeness"
+    },
+    "142": {
+      "planned_enforcement": "automated",
+      "planned_gate": "destructive-action-guard",
+      "requires_decision": false,
+      "family_note": "`destructive-action-guard` — declared destructive actions carry scope, confirmation, reversibility"
+    },
+    "143": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "supported device and browser matrix"
+    },
+    "144": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "supported device and browser matrix"
+    },
+    "145": {
+      "planned_enforcement": "automated",
+      "planned_gate": "large-dataset",
+      "requires_decision": false,
+      "family_note": "`large-dataset` — core screens usable at scale"
+    },
+    "146": {
+      "planned_enforcement": "automated",
+      "planned_gate": "accessibility",
+      "requires_decision": false,
+      "family_note": "`accessibility` — automated axe-class checks plus state completeness"
+    },
+    "147": {
+      "planned_enforcement": "human",
+      "planned_gate": "claims-review",
+      "requires_decision": false,
+      "family_note": "`claims-review` — **release blocker, human only.** No agent may pass this"
+    },
+    "148": {
+      "planned_enforcement": "human",
+      "planned_gate": "claims-review",
+      "requires_decision": false,
+      "family_note": "`claims-review` — **release blocker, human only.** No agent may pass this"
+    },
+    "149": {
+      "planned_enforcement": "human",
+      "planned_gate": "claims-review",
+      "requires_decision": false,
+      "family_note": "`claims-review` — **release blocker, human only.** No agent may pass this"
+    },
+    "150": {
+      "planned_enforcement": "human",
+      "planned_gate": "claims-review",
+      "requires_decision": false,
+      "family_note": "`claims-review` — **release blocker, human only.** No agent may pass this"
+    },
+    "151": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "inventories",
+      "requires_decision": false,
+      "family_note": "`inventories` — vendor list, data map, subprocessors"
+    },
+    "152": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "inventories",
+      "requires_decision": false,
+      "family_note": "`inventories` — vendor list, data map, subprocessors"
+    },
+    "153": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "inventories",
+      "requires_decision": false,
+      "family_note": "`inventories` — vendor list, data map, subprocessors"
+    },
+    "154": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "incident response, security contact, vulnerability disclosure"
+    },
+    "155": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "incident response, security contact, vulnerability disclosure"
+    },
+    "156": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "incident response, security contact, vulnerability disclosure"
+    },
+    "157": {
+      "planned_enforcement": "artifact",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "production ownership and access inventory"
+    },
+    "158": {
+      "planned_enforcement": "artifact",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "production ownership and access inventory"
+    },
+    "159": {
+      "planned_enforcement": "artifact",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "production ownership and access inventory"
+    },
+    "160": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "credential rotation and review process"
+    },
+    "161": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "credential rotation and review process"
+    },
+    "162": {
+      "planned_enforcement": "automated",
+      "planned_gate": "domain-protection",
+      "requires_decision": false,
+      "family_note": "`domain-protection` — renewal and ownership controls"
+    },
+    "163": {
+      "planned_enforcement": "automated",
+      "planned_gate": "monitoring-coverage",
+      "requires_decision": false,
+      "family_note": "`monitoring-coverage` — declared important failures have alerts"
+    },
+    "164": {
+      "planned_enforcement": "automated",
+      "planned_gate": "email-integrity",
+      "requires_decision": false,
+      "family_note": "`email-integrity` — SPF, DKIM, DMARC, deliverability, identity separation"
+    },
+    "165": {
+      "planned_enforcement": "automated",
+      "planned_gate": "email-integrity",
+      "requires_decision": false,
+      "family_note": "`email-integrity` — SPF, DKIM, DMARC, deliverability, identity separation"
+    },
+    "166": {
+      "planned_enforcement": "automated",
+      "planned_gate": "email-integrity",
+      "requires_decision": false,
+      "family_note": "`email-integrity` — SPF, DKIM, DMARC, deliverability, identity separation"
+    },
+    "167": {
+      "planned_enforcement": "automated",
+      "planned_gate": "email-integrity",
+      "requires_decision": false,
+      "family_note": "`email-integrity` — SPF, DKIM, DMARC, deliverability, identity separation"
+    },
+    "168": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "support tooling and privilege"
+    },
+    "169": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "support tooling and privilege"
+    },
+    "170": {
+      "planned_enforcement": "automated",
+      "planned_gate": "audit-trail-coverage",
+      "requires_decision": false,
+      "family_note": "`audit-trail-coverage` — declared consequential actions write audit rows"
+    },
+    "171": {
+      "planned_enforcement": "automated",
+      "planned_gate": "deploy-reproducibility",
+      "requires_decision": false,
+      "family_note": "`deploy-reproducibility` — documented and reproducible from source"
+    },
+    "172": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "maintainable by someone other than the builder"
+    },
+    "173": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "system-documentation",
+      "requires_decision": false,
+      "family_note": "`system-documentation` — architecture, dependency map, data flow, env vars, integration inventory, generated"
+    },
+    "174": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "system-documentation",
+      "requires_decision": false,
+      "family_note": "`system-documentation` — architecture, dependency map, data flow, env vars, integration inventory, generated"
+    },
+    "175": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "system-documentation",
+      "requires_decision": false,
+      "family_note": "`system-documentation` — architecture, dependency map, data flow, env vars, integration inventory, generated"
+    },
+    "176": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "system-documentation",
+      "requires_decision": false,
+      "family_note": "`system-documentation` — architecture, dependency map, data flow, env vars, integration inventory, generated"
+    },
+    "177": {
+      "planned_enforcement": "artifact",
+      "planned_gate": "system-documentation",
+      "requires_decision": false,
+      "family_note": "`system-documentation` — architecture, dependency map, data flow, env vars, integration inventory, generated"
+    },
+    "178": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "DR priorities, RTO/RPO, maintenance mode"
+    },
+    "179": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "DR priorities, RTO/RPO, maintenance mode"
+    },
+    "180": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "DR priorities, RTO/RPO, maintenance mode"
+    },
+    "181": {
+      "planned_enforcement": "automated",
+      "planned_gate": "model-boundary",
+      "requires_decision": false,
+      "family_note": "`model-boundary` — model output untrusted, cannot act unvalidated, retrieved content is data"
+    },
+    "182": {
+      "planned_enforcement": "automated",
+      "planned_gate": "model-boundary",
+      "requires_decision": false,
+      "family_note": "`model-boundary` — model output untrusted, cannot act unvalidated, retrieved content is data"
+    },
+    "183": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "which AI actions require human confirmation"
+    },
+    "184": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "prompt-injection threat model"
+    },
+    "185": {
+      "planned_enforcement": "automated",
+      "planned_gate": "model-boundary",
+      "requires_decision": false,
+      "family_note": "`model-boundary` — model output untrusted, cannot act unvalidated, retrieved content is data"
+    },
+    "186": {
+      "planned_enforcement": "automated",
+      "planned_gate": "model-boundary",
+      "requires_decision": false,
+      "family_note": "`model-boundary` — model output untrusted, cannot act unvalidated, retrieved content is data"
+    },
+    "187": {
+      "planned_enforcement": "automated",
+      "planned_gate": "tenant-isolation",
+      "requires_decision": false,
+      "family_note": "`tenant-isolation` — generated cross-tenant access tests; 404 not 403"
+    },
+    "188": {
+      "planned_enforcement": "automated",
+      "planned_gate": "tenant-isolation",
+      "requires_decision": false,
+      "family_note": "`tenant-isolation` — generated cross-tenant access tests; 404 not 403"
+    },
+    "189": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "sensitive-data policy and vendor terms"
+    },
+    "190": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "sensitive-data policy and vendor terms"
+    },
+    "191": {
+      "planned_enforcement": "automated",
+      "planned_gate": "output-verification",
+      "requires_decision": false,
+      "family_note": "`output-verification` — citations verified, deterministic validation after extraction, traceability"
+    },
+    "192": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "confidence thresholds and uncertainty surfacing"
+    },
+    "193": {
+      "planned_enforcement": "automated",
+      "planned_gate": "output-verification",
+      "requires_decision": false,
+      "family_note": "`output-verification` — citations verified, deterministic validation after extraction, traceability"
+    },
+    "194": {
+      "planned_enforcement": "automated",
+      "planned_gate": "output-verification",
+      "requires_decision": false,
+      "family_note": "`output-verification` — citations verified, deterministic validation after extraction, traceability"
+    },
+    "195": {
+      "planned_enforcement": "automated",
+      "planned_gate": "prompt-versioning",
+      "requires_decision": false,
+      "family_note": "`prompt-versioning` — prompts, models, retrieval logic versioned; model changes tested"
+    },
+    "196": {
+      "planned_enforcement": "automated",
+      "planned_gate": "prompt-versioning",
+      "requires_decision": false,
+      "family_note": "`prompt-versioning` — prompts, models, retrieval logic versioned; model changes tested"
+    },
+    "197": {
+      "planned_enforcement": "automated",
+      "planned_gate": "spend-bounds",
+      "requires_decision": false,
+      "family_note": "`spend-bounds` — expensive operations capped; budgets and alarms present"
+    },
+    "198": {
+      "planned_enforcement": "automated",
+      "planned_gate": "spend-bounds",
+      "requires_decision": false,
+      "family_note": "`spend-bounds` — expensive operations capped; budgets and alarms present"
+    },
+    "199": {
+      "planned_enforcement": "automated",
+      "planned_gate": "rate-limit-coverage",
+      "requires_decision": false,
+      "family_note": "`rate-limit-coverage` — declared endpoints carry limits"
+    },
+    "200": {
+      "planned_enforcement": "human",
+      "planned_gate": null,
+      "requires_decision": false,
+      "family_note": "confidence thresholds and uncertainty surfacing"
+    }
+  },
+  "website": {},
+  "website_status": "UNCLASSIFIED — all 150 website controls await classification. PLAN.md Phase 3 maps them by module range only. Reporting them as anything else would be a claim without a basis."
+}

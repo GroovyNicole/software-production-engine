@@ -1,0 +1,757 @@
+{
+  "register": "website",
+  "count": 150,
+  "source": "engineering-playbook/docs/standards/website",
+  "controls": [
+    {
+      "id": "W001",
+      "number": 1,
+      "text": "The website has a documented purpose, intended audiences, business outcomes, and measurable success criteria."
+    },
+    {
+      "id": "W002",
+      "number": 2,
+      "text": "A named business owner is accountable for content, legal approvals, budget, and launch decisions."
+    },
+    {
+      "id": "W003",
+      "number": 3,
+      "text": "The project scope distinguishes migration, redesign, new functionality, content work, and deferred work."
+    },
+    {
+      "id": "W004",
+      "number": 4,
+      "text": "Roles are explicit for product ownership, design, development, content, accessibility, security, privacy, SEO, and operations."
+    },
+    {
+      "id": "W005",
+      "number": 5,
+      "text": "Requirements and acceptance criteria are recorded before implementation and remain traceable to delivered pages and features."
+    },
+    {
+      "id": "W006",
+      "number": 6,
+      "text": "The website is risk-classified based on public exposure, administrator access, forms, uploads, payments, sensitive data, and legal claims."
+    },
+    {
+      "id": "W007",
+      "number": 7,
+      "text": "Required legal, privacy, accessibility, advertising, and brand reviews are identified without treating engineering guidance as legal advice."
+    },
+    {
+      "id": "W008",
+      "number": 8,
+      "text": "External vendors, plugins, themes, fonts, analytics tools, embeds, CDNs, form processors, and email services are inventoried and owned."
+    },
+    {
+      "id": "W009",
+      "number": 9,
+      "text": "The repository, work tracker, content ledger, design system, and production CMS each have a documented source-of-truth role."
+    },
+    {
+      "id": "W010",
+      "number": 10,
+      "text": "Material changes use documented approval, release, rollback, and evidence-retention procedures."
+    },
+    {
+      "id": "W011",
+      "number": 11,
+      "text": "A machine-readable inventory covers every current URL, status code, canonical URL, indexability state, and content type."
+    },
+    {
+      "id": "W012",
+      "number": 12,
+      "text": "Every page is mapped to an approved template or documented exception rather than recreated as an ungoverned one-off design."
+    },
+    {
+      "id": "W013",
+      "number": 13,
+      "text": "Images, documents, video, fonts, logos, icons, and downloadable assets are inventoried with ownership, license, source, and replacement status."
+    },
+    {
+      "id": "W014",
+      "number": 14,
+      "text": "Current titles, descriptions, headings, structured data, internal links, canonicals, robots directives, and sitemap membership are captured before migration."
+    },
+    {
+      "id": "W015",
+      "number": 15,
+      "text": "Forms, scheduling, email marketing, maps, search, payments, downloads, and other functional integrations are inventoried end to end."
+    },
+    {
+      "id": "W016",
+      "number": 16,
+      "text": "All analytics, advertising, tag-manager, session-recording, chat, and tracking scripts are inventoried, deduplicated, and assigned a business purpose."
+    },
+    {
+      "id": "W017",
+      "number": 17,
+      "text": "The current site's accessibility baseline is documented using automated checks plus keyboard, zoom, and assistive-technology sampling."
+    },
+    {
+      "id": "W018",
+      "number": 18,
+      "text": "The current site's performance baseline records representative mobile and desktop lab results and available field data."
+    },
+    {
+      "id": "W019",
+      "number": 19,
+      "text": "A data-flow record shows what users submit, where data goes, who receives it, how long it remains, and how deletion occurs."
+    },
+    {
+      "id": "W020",
+      "number": 20,
+      "text": "A migration ledger contains one row per old URL with its intended destination, action, owner, content status, redirect status, QA evidence, and approval."
+    },
+    {
+      "id": "W021",
+      "number": 21,
+      "text": "Development, staging, and production are separated, named, access-controlled, and protected from accidental cross-environment actions."
+    },
+    {
+      "id": "W022",
+      "number": 22,
+      "text": "Staging is password-protected in addition to using noindex, and it contains no unnecessary production personal or confidential data."
+    },
+    {
+      "id": "W023",
+      "number": 23,
+      "text": "Production deployments are reproducible from versioned source or an exported, reviewable configuration rather than undocumented dashboard edits."
+    },
+    {
+      "id": "W024",
+      "number": 24,
+      "text": "The platform responsibility model states what the host secures and backs up and what the operating organization must configure, test, monitor, and recover."
+    },
+    {
+      "id": "W025",
+      "number": 25,
+      "text": "Themes, plugins, blocks, and libraries are selected for active maintenance, accessibility, compatibility, support, and minimal privilege."
+    },
+    {
+      "id": "W026",
+      "number": 26,
+      "text": "The site uses the smallest practical dependency and plugin set; overlapping plugins and duplicate platform features are avoided."
+    },
+    {
+      "id": "W027",
+      "number": 27,
+      "text": "Failures of external services such as forms, email, maps, analytics, fonts, scheduling, or payment providers degrade safely."
+    },
+    {
+      "id": "W028",
+      "number": 28,
+      "text": "Environment-specific domains, IDs, API endpoints, keys, caching behavior, robots rules, and feature settings are documented without exposing secrets."
+    },
+    {
+      "id": "W029",
+      "number": 29,
+      "text": "Backups cover database, uploads, theme or custom code, configuration, and necessary external exports, and restoration is tested."
+    },
+    {
+      "id": "W030",
+      "number": 30,
+      "text": "A rollback procedure identifies the prior deploy, database or content implications, DNS fallback, responsible person, and verification steps."
+    },
+    {
+      "id": "W031",
+      "number": 31,
+      "text": "Custom theme code, patterns, templates, scripts, styles, configuration, and documentation are version-controlled in an identified repository."
+    },
+    {
+      "id": "W032",
+      "number": 32,
+      "text": "Generated artifacts are distinguishable from authoritative source and can be reproduced by documented commands."
+    },
+    {
+      "id": "W033",
+      "number": 33,
+      "text": "Changes use short-lived branches, focused commits, reviewable diffs, pull requests, and documented verification evidence."
+    },
+    {
+      "id": "W034",
+      "number": 34,
+      "text": "Dependencies and build tools are pinned or locked, reviewed before introduction, and updated through an intentional process."
+    },
+    {
+      "id": "W035",
+      "number": 35,
+      "text": "Formatting, linting, validation, and static analysis run consistently locally and in continuous integration where code is deployed."
+    },
+    {
+      "id": "W036",
+      "number": 36,
+      "text": "Repositories, build output, browser code, CMS fields, screenshots, logs, and documentation contain no secrets or private production data."
+    },
+    {
+      "id": "W037",
+      "number": 37,
+      "text": "Pages use semantic header, navigation, main, article, aside, and footer structures appropriate to the content."
+    },
+    {
+      "id": "W038",
+      "number": 38,
+      "text": "Markup has valid nesting, unique IDs, correctly associated labels, and no duplicate or malformed interactive controls."
+    },
+    {
+      "id": "W039",
+      "number": 39,
+      "text": "Each page has one clear primary heading and a logical heading hierarchy that reflects document structure rather than visual size."
+    },
+    {
+      "id": "W040",
+      "number": 40,
+      "text": "Links navigate, buttons perform actions, and custom controls are not used where native HTML provides the required behavior."
+    },
+    {
+      "id": "W041",
+      "number": 41,
+      "text": "Core content, navigation, and forms remain usable under progressive enhancement when nonessential JavaScript fails."
+    },
+    {
+      "id": "W042",
+      "number": 42,
+      "text": "Reusable templates avoid inline event handlers, arbitrary inline styles, copied script fragments, and page-specific code that bypasses the design system."
+    },
+    {
+      "id": "W043",
+      "number": 43,
+      "text": "External links, downloads, new-window behavior, and target attributes are deliberate, understandable, and safely configured."
+    },
+    {
+      "id": "W044",
+      "number": 44,
+      "text": "Every document includes an appropriate doctype, language, character encoding, viewport configuration, title, and core metadata."
+    },
+    {
+      "id": "W045",
+      "number": 45,
+      "text": "Structured data is generated from truthful visible content and passes the relevant validator without unsupported claims."
+    },
+    {
+      "id": "W046",
+      "number": 46,
+      "text": "A single versioned design-token source governs colors, typography, spacing, radii, borders, shadows, widths, and motion values."
+    },
+    {
+      "id": "W047",
+      "number": 47,
+      "text": "Tokens use semantic names such as text, surface, action, focus, success, warning, and danger rather than page-specific or arbitrary names."
+    },
+    {
+      "id": "W048",
+      "number": 48,
+      "text": "Typography uses a documented scale, limited font families and weights, readable line lengths, and predictable heading and body roles."
+    },
+    {
+      "id": "W049",
+      "number": 49,
+      "text": "Spacing uses a documented scale; repeated arbitrary pixel values and one-off margins are treated as defects."
+    },
+    {
+      "id": "W050",
+      "number": 50,
+      "text": "Breakpoints respond to content failure points and are centralized rather than copied inconsistently across components."
+    },
+    {
+      "id": "W051",
+      "number": 51,
+      "text": "Selectors are component- or block-scoped and avoid names likely to collide with WordPress, plugins, Bootstrap, embeds, or future features."
+    },
+    {
+      "id": "W052",
+      "number": 52,
+      "text": "Specificity stays intentionally low using classes and appropriate :where() grouping so overrides do not become a specificity contest."
+    },
+    {
+      "id": "W053",
+      "number": 53,
+      "text": "ID selectors and !important are prohibited except for a documented, narrow compatibility exception with an owner and removal condition."
+    },
+    {
+      "id": "W054",
+      "number": 54,
+      "text": "Broad element selectors do not unintentionally restyle admin interfaces, embedded tools, plugin components, form controls, or third-party widgets."
+    },
+    {
+      "id": "W055",
+      "number": 55,
+      "text": "Every interactive component defines default, hover, focus-visible, active, disabled, loading, error, and success states as applicable."
+    },
+    {
+      "id": "W056",
+      "number": 56,
+      "text": "Focus indicators are clearly visible, meet contrast expectations, are not clipped, and are not removed without an accessible replacement."
+    },
+    {
+      "id": "W057",
+      "number": 57,
+      "text": "Text links remain identifiable without relying only on color, and visited-link behavior is deliberate where it improves orientation."
+    },
+    {
+      "id": "W058",
+      "number": 58,
+      "text": "Layouts reflow without unintended horizontal scrolling, overlap, clipping, unreadable text, or touch targets that collapse at narrow widths."
+    },
+    {
+      "id": "W059",
+      "number": 59,
+      "text": "Motion is purposeful, avoids harmful flashing, and respects prefers-reduced-motion without hiding information or functionality."
+    },
+    {
+      "id": "W060",
+      "number": 60,
+      "text": "Duplicate, dead, and superseded CSS is removed; the stylesheet has an enforced size budget and documented ownership."
+    },
+    {
+      "id": "W061",
+      "number": 61,
+      "text": "WCAG 2.2 Level AA is the engineering baseline unless a stricter contractual or legal requirement applies."
+    },
+    {
+      "id": "W062",
+      "number": 62,
+      "text": "Accessibility is implemented in native structure, content, and interaction; an overlay or widget is never accepted as a substitute for remediation."
+    },
+    {
+      "id": "W063",
+      "number": 63,
+      "text": "All navigation, controls, dialogs, menus, forms, and media can be operated with a keyboard alone."
+    },
+    {
+      "id": "W064",
+      "number": 64,
+      "text": "A visible-on-focus skip link reaches the main content, and repeated blocks can be bypassed efficiently."
+    },
+    {
+      "id": "W065",
+      "number": 65,
+      "text": "Landmarks and accessible names let assistive-technology users identify navigation, search, main content, complementary content, and footer regions."
+    },
+    {
+      "id": "W066",
+      "number": 66,
+      "text": "Interactive components expose correct accessible names, roles, values, states, descriptions, and status changes."
+    },
+    {
+      "id": "W067",
+      "number": 67,
+      "text": "Focus order follows the meaningful reading and interaction sequence, and focus is restored or moved intentionally after dynamic actions."
+    },
+    {
+      "id": "W068",
+      "number": 68,
+      "text": "Content remains usable at 200 percent text zoom and through responsive reflow equivalent to 400 percent zoom at standard desktop width."
+    },
+    {
+      "id": "W069",
+      "number": 69,
+      "text": "Text, large text, controls, focus indicators, charts, and meaningful graphics meet applicable contrast requirements."
+    },
+    {
+      "id": "W070",
+      "number": 70,
+      "text": "Color, position, shape, sound, or animation is not the sole way to communicate meaning, state, validation, or required action."
+    },
+    {
+      "id": "W071",
+      "number": 71,
+      "text": "Informative images have concise purpose-based alternative text rather than filenames, keyword stuffing, or redundant visible captions."
+    },
+    {
+      "id": "W072",
+      "number": 72,
+      "text": "Decorative images use empty alternative text or an equivalent mechanism so assistive technology can ignore them."
+    },
+    {
+      "id": "W073",
+      "number": 73,
+      "text": "Form fields have persistent labels, instructions, required-state communication, appropriate autocomplete values, and accessible grouping."
+    },
+    {
+      "id": "W074",
+      "number": 74,
+      "text": "Validation identifies errors in text, associates messages with fields, preserves input, moves focus appropriately, and announces status."
+    },
+    {
+      "id": "W075",
+      "number": 75,
+      "text": "Interactive targets provide sufficient size and spacing, including on touch screens and at responsive breakpoints."
+    },
+    {
+      "id": "W076",
+      "number": 76,
+      "text": "Navigation, labels, component behavior, and help mechanisms remain consistent across templates and processes."
+    },
+    {
+      "id": "W077",
+      "number": 77,
+      "text": "Prerecorded media includes accurate captions and necessary transcripts or audio description; autoplay is avoided."
+    },
+    {
+      "id": "W078",
+      "number": 78,
+      "text": "Dialogs, disclosures, carousels, menus, accordions, and tabs follow established accessible interaction patterns or are replaced with simpler native controls."
+    },
+    {
+      "id": "W079",
+      "number": 79,
+      "text": "Release testing includes manual keyboard, zoom, high-contrast or forced-color, and screen-reader checks on representative complete processes."
+    },
+    {
+      "id": "W080",
+      "number": 80,
+      "text": "The site provides an accurate accessibility statement and contact path without making an unsupported conformance or legal-compliance claim."
+    },
+    {
+      "id": "W081",
+      "number": 81,
+      "text": "HTTPS is enforced for all traffic, mixed content is absent, certificates are monitored, and HSTS is evaluated and configured safely."
+    },
+    {
+      "id": "W082",
+      "number": 82,
+      "text": "Applicable response headers are deliberately configured and verified, including CSP or a staged CSP plan, frame protection, referrer policy, MIME sniffing protection, and permissions policy."
+    },
+    {
+      "id": "W083",
+      "number": 83,
+      "text": "Every privileged CMS, hosting, registrar, DNS, analytics, email, and integration account uses multi-factor authentication or passkeys where supported."
+    },
+    {
+      "id": "W084",
+      "number": 84,
+      "text": "Administrators use unique named accounts, least-privilege roles, no shared credentials, and separate daily-use and privileged access where practical."
+    },
+    {
+      "id": "W085",
+      "number": 85,
+      "text": "Privileged access and active sessions are inventoried, reviewed periodically, and revoked promptly when no longer needed."
+    },
+    {
+      "id": "W086",
+      "number": 86,
+      "text": "Login, password-reset, form, search, and expensive public endpoints have appropriate rate limiting and abuse detection."
+    },
+    {
+      "id": "W087",
+      "number": 87,
+      "text": "WordPress core, themes, plugins, PHP, build tools, and dependencies receive supported security updates through a monitored process."
+    },
+    {
+      "id": "W088",
+      "number": 88,
+      "text": "Each plugin and theme has a documented purpose, vendor, maintenance status, data access, permissions, update owner, and removal plan."
+    },
+    {
+      "id": "W089",
+      "number": 89,
+      "text": "Unused, abandoned, duplicated, or disabled plugins and themes are removed rather than left installed."
+    },
+    {
+      "id": "W090",
+      "number": 90,
+      "text": "Dashboard code editing, arbitrary code execution, unsafe uploads, and unnecessary remote interfaces are disabled or restricted where the platform permits."
+    },
+    {
+      "id": "W091",
+      "number": 91,
+      "text": "All untrusted input is validated and normalized; output is escaped for its context; database access uses safe platform APIs or parameterization."
+    },
+    {
+      "id": "W092",
+      "number": 92,
+      "text": "State-changing requests use WordPress nonces or equivalent CSRF protections in addition to authorization checks."
+    },
+    {
+      "id": "W093",
+      "number": 93,
+      "text": "XSS exposure is reduced through safe templating and sanitization, with Content Security Policy used as defense in depth rather than the only control."
+    },
+    {
+      "id": "W094",
+      "number": 94,
+      "text": "Production errors do not expose stack traces, filesystem paths, SQL details, tokens, or personal data, and security logs avoid sensitive content."
+    },
+    {
+      "id": "W095",
+      "number": 95,
+      "text": "Security events, file or configuration changes, uptime, certificates, and vendor alerts are monitored under a documented incident-response process."
+    },
+    {
+      "id": "W096",
+      "number": 96,
+      "text": "Forms collect only information necessary for the stated purpose and avoid open-ended requests for sensitive or confidential detail when it is not required."
+    },
+    {
+      "id": "W097",
+      "number": 97,
+      "text": "Each collection point provides a clear purpose, recipient, expected response, privacy notice, and any required terms or acknowledgments."
+    },
+    {
+      "id": "W098",
+      "number": 98,
+      "text": "Professional-service intake forms clearly warn users not to submit confidential or emergency information until the responsible business and legal owners approve different language."
+    },
+    {
+      "id": "W099",
+      "number": 99,
+      "text": "Form validation runs on the server or trusted service, rejects unexpected fields and values, and does not rely only on browser validation."
+    },
+    {
+      "id": "W100",
+      "number": 100,
+      "text": "Spam, bot, credential-stuffing, and submission abuse controls are proportionate, accessible, rate-limited, and tested for false positives."
+    },
+    {
+      "id": "W101",
+      "number": 101,
+      "text": "File uploads, if allowed, restrict type, size, quantity, filename handling, storage, retrieval authorization, retention, and malware risk."
+    },
+    {
+      "id": "W102",
+      "number": 102,
+      "text": "Submission data is encrypted in transit and protected at rest by the platform and downstream services appropriate to its sensitivity."
+    },
+    {
+      "id": "W103",
+      "number": 103,
+      "text": "Email and chat notifications minimize submitted data, avoid credentials and sensitive attachments, and direct authorized staff to the protected source record."
+    },
+    {
+      "id": "W104",
+      "number": 104,
+      "text": "Retention, deletion, correction, export, backup persistence, and legal-hold behavior are documented and implementable."
+    },
+    {
+      "id": "W105",
+      "number": 105,
+      "text": "Access to submissions is least-privilege, auditable, periodically reviewed, and revoked promptly when roles change."
+    },
+    {
+      "id": "W106",
+      "number": 106,
+      "text": "Cookie, storage, advertising, and nonessential tracking behavior follows an approved consent and privacy design appropriate to applicable requirements."
+    },
+    {
+      "id": "W107",
+      "number": 107,
+      "text": "Analytics tags and properties are deduplicated, documented, tested, filtered for internal traffic as appropriate, and prevented from collecting prohibited data."
+    },
+    {
+      "id": "W108",
+      "number": 108,
+      "text": "Session recording, heatmaps, chat, and replay tools receive explicit privacy, masking, consent, performance, and vendor review before activation."
+    },
+    {
+      "id": "W109",
+      "number": 109,
+      "text": "Third-party processors have documented data flows, retention, security, subprocessor, regional, contract, deletion, and incident considerations."
+    },
+    {
+      "id": "W110",
+      "number": 110,
+      "text": "Every form and integration is tested end to end for success, validation failure, provider outage, duplicate submission, retry, notification, storage, and user-facing recovery."
+    },
+    {
+      "id": "W111",
+      "number": 111,
+      "text": "The project defines measurable page-weight, request-count, JavaScript, CSS, image, font, and third-party performance budgets."
+    },
+    {
+      "id": "W112",
+      "number": 112,
+      "text": "Representative page groups target a 75th-percentile Largest Contentful Paint of 2.5 seconds or less using field data when available."
+    },
+    {
+      "id": "W113",
+      "number": 113,
+      "text": "Representative page groups target a 75th-percentile Interaction to Next Paint of 200 milliseconds or less using field data when available."
+    },
+    {
+      "id": "W114",
+      "number": 114,
+      "text": "Representative page groups target a 75th-percentile Cumulative Layout Shift of 0.1 or less using field data when available."
+    },
+    {
+      "id": "W115",
+      "number": 115,
+      "text": "Images use appropriate formats, dimensions, compression, responsive srcset or sizes, and an intentional media-derivative policy."
+    },
+    {
+      "id": "W116",
+      "number": 116,
+      "text": "Images and embeds reserve dimensions to prevent layout shift; below-the-fold media is lazy-loaded without delaying the likely LCP element."
+    },
+    {
+      "id": "W117",
+      "number": 117,
+      "text": "Fonts are licensed, minimized by family and weight, served under an approved privacy strategy, and loaded without prolonged invisible text."
+    },
+    {
+      "id": "W118",
+      "number": 118,
+      "text": "CSS and JavaScript are minimized, split or deferred when useful, and do not block rendering or ship unused framework payloads without justification."
+    },
+    {
+      "id": "W119",
+      "number": 119,
+      "text": "Caching, CDN behavior, compression, cache invalidation, and authenticated-page exclusions are configured and verified rather than assumed."
+    },
+    {
+      "id": "W120",
+      "number": 120,
+      "text": "Every third-party script has a business owner, consent classification, loading strategy, failure behavior, performance cost, and removal trigger."
+    },
+    {
+      "id": "W121",
+      "number": 121,
+      "text": "The critical user journey remains understandable during slow networks, blocked third-party requests, unavailable embeds, and JavaScript errors."
+    },
+    {
+      "id": "W122",
+      "number": 122,
+      "text": "Templates avoid excessive DOM depth, duplicated hidden markup, unnecessary wrappers, and layout techniques that cause repeated reflow."
+    },
+    {
+      "id": "W123",
+      "number": 123,
+      "text": "Helpful 404, empty, unavailable, validation, and error states preserve navigation and avoid false success messages."
+    },
+    {
+      "id": "W124",
+      "number": 124,
+      "text": "External monitoring covers uptime, TLS, domain expiration, critical forms, and other business-critical journeys with actionable alerts."
+    },
+    {
+      "id": "W125",
+      "number": 125,
+      "text": "Load and resilience testing are proportionate to expected traffic, campaign spikes, bot exposure, and the cost of dependent services."
+    },
+    {
+      "id": "W126",
+      "number": 126,
+      "text": "Every page and reusable content type has a named content owner, purpose, intended audience, update trigger, and review date."
+    },
+    {
+      "id": "W127",
+      "number": 127,
+      "text": "Professional, legal, medical, financial, statistical, testimonial, case-result, and advertising claims receive qualified factual and policy review."
+    },
+    {
+      "id": "W128",
+      "number": 128,
+      "text": "Each indexable page provides distinct, useful, audience-centered value and is not a thin, duplicated, doorway, or keyword-swapped page."
+    },
+    {
+      "id": "W129",
+      "number": 129,
+      "text": "Titles, primary headings, descriptions, link text, and social metadata are accurate, unique where appropriate, and generated from controlled rules."
+    },
+    {
+      "id": "W130",
+      "number": 130,
+      "text": "Each indexable page has one intended canonical URL, and protocol, host, trailing-slash, parameter, archive, and duplicate variants resolve consistently."
+    },
+    {
+      "id": "W131",
+      "number": 131,
+      "text": "Robots directives, sitemap contents, crawl access, feeds, and indexability are intentional for every environment and content type."
+    },
+    {
+      "id": "W132",
+      "number": 132,
+      "text": "Internal navigation and contextual links expose important content, avoid orphan pages, and use understandable link text."
+    },
+    {
+      "id": "W133",
+      "number": 133,
+      "text": "Organization, person, local business, article, breadcrumb, FAQ, review, and other structured data are used only when supported by visible truthful content and current eligibility rules."
+    },
+    {
+      "id": "W134",
+      "number": 134,
+      "text": "Existing URLs are preserved when practical; URL changes require a documented business reason rather than aesthetic preference."
+    },
+    {
+      "id": "W135",
+      "number": 135,
+      "text": "The redirect plan covers every old URL that will not return the intended content at the same URL, including assets and important external campaign links where relevant."
+    },
+    {
+      "id": "W136",
+      "number": 136,
+      "text": "Each redirect is permanent when appropriate, reaches the closest relevant final URL in one hop, preserves necessary parameters, and ends at a successful indexable response."
+    },
+    {
+      "id": "W137",
+      "number": 137,
+      "text": "Staging protections are verified before content entry and fully removed at launch; production noindex, blocked resources, and placeholder canonicals are release blockers."
+    },
+    {
+      "id": "W138",
+      "number": 138,
+      "text": "Migrated images and documents use owned URLs, correct file types and dimensions, useful filenames where practical, accessible text alternatives, and tested inbound links."
+    },
+    {
+      "id": "W139",
+      "number": 139,
+      "text": "Prelaunch and postlaunch crawls compare old and new inventories for status codes, redirects, canonicals, titles, headings, metadata, indexability, internal links, and missing assets."
+    },
+    {
+      "id": "W140",
+      "number": 140,
+      "text": "Search Console, analytics, rankings for material queries, crawl errors, sitemap processing, index coverage, and important landing pages are monitored after launch with an escalation owner."
+    },
+    {
+      "id": "W141",
+      "number": 141,
+      "text": "A risk-based test matrix covers every template, content type, critical journey, supported browser, viewport class, input method, and relevant user state."
+    },
+    {
+      "id": "W142",
+      "number": 142,
+      "text": "Automated checks cover formatting, linting, build integrity, HTML or template validation, links, accessibility, security, and performance where the stack permits."
+    },
+    {
+      "id": "W143",
+      "number": 143,
+      "text": "Manual release testing covers keyboard operation, zoom and reflow, representative screen-reader use, focus behavior, and complete user processes."
+    },
+    {
+      "id": "W144",
+      "number": 144,
+      "text": "All forms, scheduling, downloads, search, payments, email, analytics, consent, maps, and third-party integrations are tested in their production-like configuration."
+    },
+    {
+      "id": "W145",
+      "number": 145,
+      "text": "Visual regression or disciplined template screenshots detect unintended layout, typography, responsive, and content changes across releases."
+    },
+    {
+      "id": "W146",
+      "number": 146,
+      "text": "Prelaunch security review covers privileged accounts, multi-factor authentication, access, updates, plugins, headers, forms, secrets, logging, backups, and recovery."
+    },
+    {
+      "id": "W147",
+      "number": 147,
+      "text": "A complete content and technical crawl is reconciled against the migration ledger before approval, with no unexplained URL or asset omissions."
+    },
+    {
+      "id": "W148",
+      "number": 148,
+      "text": "The release plan defines change freeze, backup, deployment steps, DNS actions, verification, rollback thresholds, owners, and communication."
+    },
+    {
+      "id": "W149",
+      "number": 149,
+      "text": "Postlaunch smoke tests and monitoring begin immediately and continue through a defined stabilization period before legacy hosting or rollback options are removed."
+    },
+    {
+      "id": "W150",
+      "number": 150,
+      "text": "Active production websites receive a complete 150-control review at least quarterly, with affected controls reviewed for every material change and evidence retained."
+    }
+  ]
+}

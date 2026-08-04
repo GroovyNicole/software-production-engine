@@ -1,0 +1,1007 @@
+{
+  "register": "software",
+  "count": 200,
+  "source": "engineering-playbook/docs/standards/software",
+  "controls": [
+    {
+      "id": "S001",
+      "number": 1,
+      "text": "Real server-side authorization checks protect every read, change, export, and delete operation."
+    },
+    {
+      "id": "S002",
+      "number": 2,
+      "text": "Tenant isolation prevents one user or company from accessing another's data by changing an identifier, URL, request, or query."
+    },
+    {
+      "id": "S003",
+      "number": 3,
+      "text": "Secrets are absent from frontend code, repositories, logs, browser storage, screenshots, and documentation."
+    },
+    {
+      "id": "S004",
+      "number": 4,
+      "text": "All untrusted input is validated on the server, not only in the browser."
+    },
+    {
+      "id": "S005",
+      "number": 5,
+      "text": "The authentication lifecycle covers sign-up, verification, reset, expiration, logout, recovery, revocation, and compromised accounts."
+    },
+    {
+      "id": "S006",
+      "number": 6,
+      "text": "Database backups exist and restoration has been tested."
+    },
+    {
+      "id": "S007",
+      "number": 7,
+      "text": "Destructive actions are scoped, confirmed, reversible where appropriate, and protected from accidental bulk impact."
+    },
+    {
+      "id": "S008",
+      "number": 8,
+      "text": "Multi-step operations use transaction boundaries or compensating behavior so partial success cannot corrupt state."
+    },
+    {
+      "id": "S009",
+      "number": 9,
+      "text": "Race conditions and duplicate processing are handled for clicks, retries, concurrent requests, jobs, and redelivered events."
+    },
+    {
+      "id": "S010",
+      "number": 10,
+      "text": "Retryable operations are idempotent or otherwise safely deduplicated."
+    },
+    {
+      "id": "S011",
+      "number": 11,
+      "text": "The server derives and verifies prices, roles, plans, user IDs, ownership, permissions, and completion state instead of trusting the client."
+    },
+    {
+      "id": "S012",
+      "number": 12,
+      "text": "File uploads restrict type, size, name, content, storage location, malware risk, and retrieval permissions."
+    },
+    {
+      "id": "S013",
+      "number": 13,
+      "text": "Login, reset, email, search, upload, public form, expensive API, and AI endpoints have rate limits and abuse controls."
+    },
+    {
+      "id": "S014",
+      "number": 14,
+      "text": "Payment entitlement is based on verified provider events, not a browser success page."
+    },
+    {
+      "id": "S015",
+      "number": 15,
+      "text": "Webhook signatures are verified; events are deduplicated; retries and out-of-order delivery are handled."
+    },
+    {
+      "id": "S016",
+      "number": 16,
+      "text": "Errors are handled meaningfully without blank screens, false success, swallowed exceptions, or corrupted intermediate state."
+    },
+    {
+      "id": "S017",
+      "number": 17,
+      "text": "Monitoring and alerting detect important failures promptly."
+    },
+    {
+      "id": "S018",
+      "number": 18,
+      "text": "Consequential actions have an audit trail, including permissions, exports, deletions, billing, and administrative access."
+    },
+    {
+      "id": "S019",
+      "number": 19,
+      "text": "Logs exclude passwords, tokens, payment data, private documents, sensitive personal data, and unnecessary user content."
+    },
+    {
+      "id": "S020",
+      "number": 20,
+      "text": "A tested recovery plan covers failed deployments, corrupt data, compromised keys, failed migrations, and deleted storage."
+    },
+    {
+      "id": "S021",
+      "number": 21,
+      "text": "Database constraints enforce required values, uniqueness, valid relationships, and ownership where applicable."
+    },
+    {
+      "id": "S022",
+      "number": 22,
+      "text": "Data integrity is not entrusted solely to application code when the database can enforce it."
+    },
+    {
+      "id": "S023",
+      "number": 23,
+      "text": "Money uses integer minor units or an appropriate decimal type, not binary floating point."
+    },
+    {
+      "id": "S024",
+      "number": 24,
+      "text": "Time is stored canonically with the timezone context needed to interpret business events."
+    },
+    {
+      "id": "S025",
+      "number": 25,
+      "text": "Daylight-saving transitions and timezone conversion are tested where scheduling matters."
+    },
+    {
+      "id": "S026",
+      "number": 26,
+      "text": "Record identifiers are never treated as secrets or authorization."
+    },
+    {
+      "id": "S027",
+      "number": 27,
+      "text": "Sequential identifiers remain safe because every access is authorized."
+    },
+    {
+      "id": "S028",
+      "number": 28,
+      "text": "Schema changes use a documented, versioned migration strategy."
+    },
+    {
+      "id": "S029",
+      "number": 29,
+      "text": "Production database structure is not edited manually outside a controlled emergency procedure."
+    },
+    {
+      "id": "S030",
+      "number": 30,
+      "text": "Destructive migrations have backups, compatibility planning, verification, and rollback or recovery steps."
+    },
+    {
+      "id": "S031",
+      "number": 31,
+      "text": "A documented data-retention policy defines what is retained, why, and for how long."
+    },
+    {
+      "id": "S032",
+      "number": 32,
+      "text": "Account deletion has a documented model and verified workflow."
+    },
+    {
+      "id": "S033",
+      "number": 33,
+      "text": "Account deletion addresses related records, files, indexes, logs, backups, billing records, and disclosed exceptions."
+    },
+    {
+      "id": "S034",
+      "number": 34,
+      "text": "Required legal, financial, security, or operational records are retained appropriately instead of being deleted blindly."
+    },
+    {
+      "id": "S035",
+      "number": 35,
+      "text": "Soft deletion and permanent deletion are distinguished and used intentionally."
+    },
+    {
+      "id": "S036",
+      "number": 36,
+      "text": "Foreign keys, cleanup jobs, or other controls prevent orphaned records."
+    },
+    {
+      "id": "S037",
+      "number": 37,
+      "text": "Foreign-key relationships exist wherever referential integrity requires them."
+    },
+    {
+      "id": "S038",
+      "number": 38,
+      "text": "Common and high-cost queries have appropriate indexes verified against realistic data."
+    },
+    {
+      "id": "S039",
+      "number": 39,
+      "text": "Application code does not load entire growing tables into memory without a justified bound."
+    },
+    {
+      "id": "S040",
+      "number": 40,
+      "text": "Search and export queries are bounded and protected against excessive resource use."
+    },
+    {
+      "id": "S041",
+      "number": 41,
+      "text": "Growing collections use pagination or another bounded retrieval strategy."
+    },
+    {
+      "id": "S042",
+      "number": 42,
+      "text": "Duplicate detection exists where duplicate records or operations would cause harm."
+    },
+    {
+      "id": "S043",
+      "number": 43,
+      "text": "Each important fact has a canonical source of truth."
+    },
+    {
+      "id": "S044",
+      "number": 44,
+      "text": "Duplicated information has an explicit synchronization and conflict rule."
+    },
+    {
+      "id": "S045",
+      "number": 45,
+      "text": "Concurrent editing cannot silently overwrite another user's changes without detection or a deliberate policy."
+    },
+    {
+      "id": "S046",
+      "number": 46,
+      "text": "Important records have appropriate version history or change history."
+    },
+    {
+      "id": "S047",
+      "number": 47,
+      "text": "Data exports are tested for completeness, authorization, format, scale, and privacy."
+    },
+    {
+      "id": "S048",
+      "number": 48,
+      "text": "Exports include the related data, dates, attachments, and identifiers users are promised."
+    },
+    {
+      "id": "S049",
+      "number": 49,
+      "text": "Imports are validated, previewed or reversible where appropriate, and safe against partial corruption."
+    },
+    {
+      "id": "S050",
+      "number": 50,
+      "text": "Character encoding preserves names, symbols, and non-English text end to end."
+    },
+    {
+      "id": "S051",
+      "number": 51,
+      "text": "Queries and data access are protected against SQL or equivalent injection."
+    },
+    {
+      "id": "S052",
+      "number": 52,
+      "text": "Rendered user-controlled content is protected against cross-site scripting."
+    },
+    {
+      "id": "S053",
+      "number": 53,
+      "text": "Cookie-authenticated state-changing requests have CSRF protection where required."
+    },
+    {
+      "id": "S054",
+      "number": 54,
+      "text": "Redirect targets are validated to prevent unsafe redirects."
+    },
+    {
+      "id": "S055",
+      "number": 55,
+      "text": "Every object access is protected against insecure direct object reference vulnerabilities."
+    },
+    {
+      "id": "S056",
+      "number": 56,
+      "text": "Binding and update logic prevents mass assignment of unapproved fields."
+    },
+    {
+      "id": "S057",
+      "number": 57,
+      "text": "Protected fields such as role, owner ID, plan, price, and administrator status cannot be changed by ordinary users."
+    },
+    {
+      "id": "S058",
+      "number": 58,
+      "text": "Password policy is appropriate and supported by rate limiting, breach checks, MFA, and recovery controls as needed."
+    },
+    {
+      "id": "S059",
+      "number": 59,
+      "text": "Administrators use multi-factor authentication."
+    },
+    {
+      "id": "S060",
+      "number": 60,
+      "text": "Administrators have individual accounts; shared administrator credentials are prohibited or tightly controlled emergencies."
+    },
+    {
+      "id": "S061",
+      "number": 61,
+      "text": "Administrative interfaces are strongly protected, monitored, and not exposed unnecessarily."
+    },
+    {
+      "id": "S062",
+      "number": 62,
+      "text": "Access tokens expire or rotate appropriately instead of remaining permanent by default."
+    },
+    {
+      "id": "S063",
+      "number": 63,
+      "text": "Leaked credentials can be identified, revoked, rotated, and investigated promptly."
+    },
+    {
+      "id": "S064",
+      "number": 64,
+      "text": "Development, test, staging, and production use separate secrets."
+    },
+    {
+      "id": "S065",
+      "number": 65,
+      "text": "Production user data is not copied into local development without an approved, protected, and minimized process."
+    },
+    {
+      "id": "S066",
+      "number": 66,
+      "text": "Development, test, staging, and production environments are separated with clear boundaries."
+    },
+    {
+      "id": "S067",
+      "number": 67,
+      "text": "Test systems cannot accidentally send real communications, charge real cards, or modify production."
+    },
+    {
+      "id": "S068",
+      "number": 68,
+      "text": "Cloud and service permissions follow least privilege."
+    },
+    {
+      "id": "S069",
+      "number": 69,
+      "text": "Storage containing private data is not publicly accessible."
+    },
+    {
+      "id": "S070",
+      "number": 70,
+      "text": "Private file URLs are not permanent public capabilities."
+    },
+    {
+      "id": "S071",
+      "number": 71,
+      "text": "Signed URLs have the shortest practical expiration and appropriate scope."
+    },
+    {
+      "id": "S072",
+      "number": 72,
+      "text": "Private files are not served through predictable, authorization-free paths."
+    },
+    {
+      "id": "S073",
+      "number": 73,
+      "text": "Dependencies are scanned, reviewed, patched, and retired through a defined vulnerability-management process."
+    },
+    {
+      "id": "S074",
+      "number": 74,
+      "text": "Packages suggested by AI are verified before installation."
+    },
+    {
+      "id": "S075",
+      "number": 75,
+      "text": "Packages are checked for suspicious names, provenance, maintenance, necessity, and excessive privileges."
+    },
+    {
+      "id": "S076",
+      "number": 76,
+      "text": "Appropriate security headers are configured and tested."
+    },
+    {
+      "id": "S077",
+      "number": 77,
+      "text": "CORS allows only required origins, methods, headers, and credential behavior."
+    },
+    {
+      "id": "S078",
+      "number": 78,
+      "text": "Detailed stack traces are not exposed to end users."
+    },
+    {
+      "id": "S079",
+      "number": 79,
+      "text": "Raw database errors are not exposed to end users."
+    },
+    {
+      "id": "S080",
+      "number": 80,
+      "text": "High-abuse public endpoints have bot or automation defenses appropriate to risk."
+    },
+    {
+      "id": "S081",
+      "number": 81,
+      "text": "Verification and reset links expire, are single-use when appropriate, and cannot be replayed indefinitely."
+    },
+    {
+      "id": "S082",
+      "number": 82,
+      "text": "Login and reset responses do not reveal whether an account exists beyond the chosen risk policy."
+    },
+    {
+      "id": "S083",
+      "number": 83,
+      "text": "Session tokens are stored and transmitted securely."
+    },
+    {
+      "id": "S084",
+      "number": 84,
+      "text": "Frontend route guards are not the only authorization mechanism."
+    },
+    {
+      "id": "S085",
+      "number": 85,
+      "text": "Administrative privilege is never represented only by a browser-side variable or client claim."
+    },
+    {
+      "id": "S086",
+      "number": 86,
+      "text": "Automated tests cover the most important user and business workflows."
+    },
+    {
+      "id": "S087",
+      "number": 87,
+      "text": "Tests include failure and recovery paths, not only successful paths."
+    },
+    {
+      "id": "S088",
+      "number": 88,
+      "text": "Tests verify permission and tenant boundaries."
+    },
+    {
+      "id": "S089",
+      "number": 89,
+      "text": "Payment tests cover failure, delay, cancellation, dispute, and duplicate events where applicable."
+    },
+    {
+      "id": "S090",
+      "number": 90,
+      "text": "Tests cover expired, revoked, and invalid sessions."
+    },
+    {
+      "id": "S091",
+      "number": 91,
+      "text": "Tests cover duplicate and retried requests."
+    },
+    {
+      "id": "S092",
+      "number": 92,
+      "text": "Tests cover deletion, restoration, and related-data behavior."
+    },
+    {
+      "id": "S093",
+      "number": 93,
+      "text": "Backup restoration is tested on a defined cadence."
+    },
+    {
+      "id": "S094",
+      "number": 94,
+      "text": "Service health checks reflect meaningful dependency health."
+    },
+    {
+      "id": "S095",
+      "number": 95,
+      "text": "Uptime or availability is monitored for user-facing services."
+    },
+    {
+      "id": "S096",
+      "number": 96,
+      "text": "Database connectivity, capacity, and important failure signals are monitored."
+    },
+    {
+      "id": "S097",
+      "number": 97,
+      "text": "Queues and background jobs are monitored for age, failure, retry, and backlog."
+    },
+    {
+      "id": "S098",
+      "number": 98,
+      "text": "Background-task failures are visible and actionable rather than silent."
+    },
+    {
+      "id": "S099",
+      "number": 99,
+      "text": "Long-running email, export, report, or media work is moved out of request paths when timeouts or retries require it."
+    },
+    {
+      "id": "S100",
+      "number": 100,
+      "text": "Long-running operations can retry, resume, or recover safely."
+    },
+    {
+      "id": "S101",
+      "number": 101,
+      "text": "Retries are bounded, delayed appropriately, and protected from retry storms."
+    },
+    {
+      "id": "S102",
+      "number": 102,
+      "text": "External API calls have explicit connection and response timeouts."
+    },
+    {
+      "id": "S103",
+      "number": 103,
+      "text": "Dependency failures are contained with circuit breaking, backoff, or graceful error behavior where appropriate."
+    },
+    {
+      "id": "S104",
+      "number": 104,
+      "text": "One third-party service failure does not unnecessarily disable the entire application."
+    },
+    {
+      "id": "S105",
+      "number": 105,
+      "text": "The application degrades gracefully when optional features or dependencies are unavailable."
+    },
+    {
+      "id": "S106",
+      "number": 106,
+      "text": "Capacity and concurrency limits are defined and tested for likely load."
+    },
+    {
+      "id": "S107",
+      "number": 107,
+      "text": "Storage usage is measured and limited according to the product model."
+    },
+    {
+      "id": "S108",
+      "number": 108,
+      "text": "Unexpectedly expensive database or search queries are bounded, observed, and remediated."
+    },
+    {
+      "id": "S109",
+      "number": 109,
+      "text": "Unexpectedly expensive AI requests are bounded, observed, and remediated."
+    },
+    {
+      "id": "S110",
+      "number": 110,
+      "text": "Cloud, AI, email, storage, and third-party services have budgets or spending alerts."
+    },
+    {
+      "id": "S111",
+      "number": 111,
+      "text": "Deployments have a tested rollback or forward-recovery method."
+    },
+    {
+      "id": "S112",
+      "number": 112,
+      "text": "Production deployments pass staging, preview, canary, or equivalent validation appropriate to risk."
+    },
+    {
+      "id": "S113",
+      "number": 113,
+      "text": "Code, schema, and configuration changes are sequenced for compatibility and recovery."
+    },
+    {
+      "id": "S114",
+      "number": 114,
+      "text": "High-risk releases use feature flags, staged exposure, or another kill switch where appropriate."
+    },
+    {
+      "id": "S115",
+      "number": 115,
+      "text": "Configuration changes are versioned or documented and reviewable."
+    },
+    {
+      "id": "S116",
+      "number": 116,
+      "text": "Configuration drift is detected or regularly reconciled."
+    },
+    {
+      "id": "S117",
+      "number": 117,
+      "text": "Dependencies are pinned with disciplined lockfile management."
+    },
+    {
+      "id": "S118",
+      "number": 118,
+      "text": "Automatic dependency updates are tested and reviewed before production adoption."
+    },
+    {
+      "id": "S119",
+      "number": 119,
+      "text": "APIs and integrations have a deprecation process."
+    },
+    {
+      "id": "S120",
+      "number": 120,
+      "text": "Compatibility is planned for existing clients, users, and stored data."
+    },
+    {
+      "id": "S121",
+      "number": 121,
+      "text": "Recovery, cancellation, and error paths receive the same design attention as the happy path."
+    },
+    {
+      "id": "S122",
+      "number": 122,
+      "text": "Users can undo consequential actions when safe and appropriate."
+    },
+    {
+      "id": "S123",
+      "number": 123,
+      "text": "Confirmations state exactly what will be deleted, sent, charged, published, or shared."
+    },
+    {
+      "id": "S124",
+      "number": 124,
+      "text": "Success is shown only after the operation actually succeeds or is accurately described as pending."
+    },
+    {
+      "id": "S125",
+      "number": 125,
+      "text": "Submission controls prevent duplicate actions while a request is in progress."
+    },
+    {
+      "id": "S126",
+      "number": 126,
+      "text": "Form data is preserved after recoverable errors."
+    },
+    {
+      "id": "S127",
+      "number": 127,
+      "text": "Refreshing or navigating does not unexpectedly destroy important unfinished work."
+    },
+    {
+      "id": "S128",
+      "number": 128,
+      "text": "Long-form or valuable input has autosave, draft recovery, or an explicit loss warning where appropriate."
+    },
+    {
+      "id": "S129",
+      "number": 129,
+      "text": "Expired links have a clear, safe recovery path."
+    },
+    {
+      "id": "S130",
+      "number": 130,
+      "text": "Ownership transfer is documented and secure."
+    },
+    {
+      "id": "S131",
+      "number": 131,
+      "text": "Departed employees or administrators can be removed without losing control of systems or data."
+    },
+    {
+      "id": "S132",
+      "number": 132,
+      "text": "Invitations are bound to the intended identity and cannot be accepted by the wrong account without safeguards."
+    },
+    {
+      "id": "S133",
+      "number": 133,
+      "text": "Email address changes require appropriate re-verification and notification."
+    },
+    {
+      "id": "S134",
+      "number": 134,
+      "text": "Password changes revoke old sessions according to the security policy."
+    },
+    {
+      "id": "S135",
+      "number": 135,
+      "text": "Permission changes invalidate cached or existing access promptly enough for the risk."
+    },
+    {
+      "id": "S136",
+      "number": 136,
+      "text": "Disabled users cannot continue using old sessions or tokens beyond the defined revocation window."
+    },
+    {
+      "id": "S137",
+      "number": 137,
+      "text": "Users can view and revoke active sessions where the risk and product warrant it."
+    },
+    {
+      "id": "S138",
+      "number": 138,
+      "text": "The application has an accessibility review and an owned remediation process."
+    },
+    {
+      "id": "S139",
+      "number": 139,
+      "text": "Keyboard navigation supports all essential workflows."
+    },
+    {
+      "id": "S140",
+      "number": 140,
+      "text": "Meaning is not communicated only through color."
+    },
+    {
+      "id": "S141",
+      "number": 141,
+      "text": "Forms use programmatically associated labels and understandable instructions."
+    },
+    {
+      "id": "S142",
+      "number": 142,
+      "text": "Destructive controls are clearly distinguished from ordinary actions."
+    },
+    {
+      "id": "S143",
+      "number": 143,
+      "text": "Responsive and mobile behavior is tested for supported devices."
+    },
+    {
+      "id": "S144",
+      "number": 144,
+      "text": "Supported browser behavior is defined and tested."
+    },
+    {
+      "id": "S145",
+      "number": 145,
+      "text": "Large realistic datasets remain usable and do not break core screens."
+    },
+    {
+      "id": "S146",
+      "number": 146,
+      "text": "Empty, loading, success, error, and degraded states are intentionally designed."
+    },
+    {
+      "id": "S147",
+      "number": 147,
+      "text": "The product does not imply legal, medical, financial, or compliance capabilities it was not designed and reviewed to provide."
+    },
+    {
+      "id": "S148",
+      "number": 148,
+      "text": "Product claims do not exceed verified technical behavior."
+    },
+    {
+      "id": "S149",
+      "number": 149,
+      "text": "Claims such as secure, encrypted, preserved, anonymous, or compliant have a defined and verified basis."
+    },
+    {
+      "id": "S150",
+      "number": 150,
+      "text": "Marketing promises are treated as engineering obligations and reviewed before publication."
+    },
+    {
+      "id": "S151",
+      "number": 151,
+      "text": "An inventory identifies vendors and external services used by the product."
+    },
+    {
+      "id": "S152",
+      "number": 152,
+      "text": "A data map records where user and company data is stored and transmitted."
+    },
+    {
+      "id": "S153",
+      "number": 153,
+      "text": "Subprocessors are identified and reviewed where required."
+    },
+    {
+      "id": "S154",
+      "number": 154,
+      "text": "An incident-response plan defines detection, roles, containment, communication, recovery, and learning."
+    },
+    {
+      "id": "S155",
+      "number": 155,
+      "text": "A monitored security contact or reporting channel exists."
+    },
+    {
+      "id": "S156",
+      "number": 156,
+      "text": "A process receives, triages, remediates, and discloses vulnerability reports appropriately."
+    },
+    {
+      "id": "S157",
+      "number": 157,
+      "text": "Production systems have named owners."
+    },
+    {
+      "id": "S158",
+      "number": 158,
+      "text": "Production access is inventoried and reviewable."
+    },
+    {
+      "id": "S159",
+      "number": 159,
+      "text": "Former employees and contractors lose access promptly."
+    },
+    {
+      "id": "S160",
+      "number": 160,
+      "text": "Credentials and privileged access are reviewed periodically."
+    },
+    {
+      "id": "S161",
+      "number": 161,
+      "text": "Keys and long-lived credentials have a rotation schedule appropriate to risk."
+    },
+    {
+      "id": "S162",
+      "number": 162,
+      "text": "Domains use renewal protection and ownership controls."
+    },
+    {
+      "id": "S163",
+      "number": 163,
+      "text": "Alerts cover failed renewals, certificates, payment methods, and expiring credentials."
+    },
+    {
+      "id": "S164",
+      "number": 164,
+      "text": "Email deliverability and bounce or complaint signals are monitored."
+    },
+    {
+      "id": "S165",
+      "number": 165,
+      "text": "SPF, DKIM, and DMARC are configured appropriately for sending domains."
+    },
+    {
+      "id": "S166",
+      "number": 166,
+      "text": "Transactional email uses a suitable managed identity or service rather than an unmanaged personal mailbox."
+    },
+    {
+      "id": "S167",
+      "number": 167,
+      "text": "Marketing and critical transactional email are separated operationally where appropriate."
+    },
+    {
+      "id": "S168",
+      "number": 168,
+      "text": "Support tooling enables necessary diagnosis without unsafe direct production access."
+    },
+    {
+      "id": "S169",
+      "number": 169,
+      "text": "Support roles receive only the data and privileges required."
+    },
+    {
+      "id": "S170",
+      "number": 170,
+      "text": "Administrative changes to user data are logged and reviewable."
+    },
+    {
+      "id": "S171",
+      "number": 171,
+      "text": "The deployment process is documented and reproducible."
+    },
+    {
+      "id": "S172",
+      "number": 172,
+      "text": "The application can be maintained by someone other than the person or AI session that originally built it."
+    },
+    {
+      "id": "S173",
+      "number": 173,
+      "text": "Architecture documentation describes components, boundaries, and key decisions."
+    },
+    {
+      "id": "S174",
+      "number": 174,
+      "text": "A dependency map identifies critical internal and external dependencies."
+    },
+    {
+      "id": "S175",
+      "number": 175,
+      "text": "A data-flow diagram or equivalent description covers sensitive and consequential paths."
+    },
+    {
+      "id": "S176",
+      "number": 176,
+      "text": "Environment variables and configuration are documented without exposing secrets."
+    },
+    {
+      "id": "S177",
+      "number": 177,
+      "text": "Scheduled tasks, webhooks, queues, and external integrations are inventoried and owned."
+    },
+    {
+      "id": "S178",
+      "number": 178,
+      "text": "Disaster-recovery priorities identify critical services and dependencies."
+    },
+    {
+      "id": "S179",
+      "number": 179,
+      "text": "Recovery-time and recovery-point objectives are defined where the business needs them."
+    },
+    {
+      "id": "S180",
+      "number": 180,
+      "text": "A procedure exists for maintenance mode, traffic draining, or safe service suspension where needed."
+    },
+    {
+      "id": "S181",
+      "number": 181,
+      "text": "Model output is treated as untrusted, probabilistic data."
+    },
+    {
+      "id": "S182",
+      "number": 182,
+      "text": "Model output cannot directly perform database, financial, email, or administrative actions without validated boundaries."
+    },
+    {
+      "id": "S183",
+      "number": 183,
+      "text": "Consequential AI-assisted actions require appropriate human confirmation."
+    },
+    {
+      "id": "S184",
+      "number": 184,
+      "text": "Prompt-injection threats are considered for tools, retrieval, documents, and external content."
+    },
+    {
+      "id": "S185",
+      "number": 185,
+      "text": "User-provided documents and retrieved content are treated as untrusted data, not privileged instructions."
+    },
+    {
+      "id": "S186",
+      "number": 186,
+      "text": "AI receives only the data and tools required for the task."
+    },
+    {
+      "id": "S187",
+      "number": 187,
+      "text": "AI retrieval enforces per-user and per-tenant authorization."
+    },
+    {
+      "id": "S188",
+      "number": 188,
+      "text": "Retrieval tests prevent one user or tenant from receiving another's records."
+    },
+    {
+      "id": "S189",
+      "number": 189,
+      "text": "Sensitive data is sent to models only under an explicit policy and user or contractual disclosure where required."
+    },
+    {
+      "id": "S190",
+      "number": 190,
+      "text": "Model-vendor retention, training, region, security, and subprocessors are understood and reviewed."
+    },
+    {
+      "id": "S191",
+      "number": 191,
+      "text": "Model-generated facts, links, and citations are verified before being presented as authoritative."
+    },
+    {
+      "id": "S192",
+      "number": 192,
+      "text": "Extraction and classification have confidence thresholds, validation, or safe fallback behavior."
+    },
+    {
+      "id": "S193",
+      "number": 193,
+      "text": "Deterministic validation follows AI extraction before data is trusted or committed."
+    },
+    {
+      "id": "S194",
+      "number": 194,
+      "text": "AI outputs retain traceability to source material where decisions or evidence depend on it."
+    },
+    {
+      "id": "S195",
+      "number": 195,
+      "text": "Prompts, models, retrieval logic, and extraction logic are versioned for consequential workflows."
+    },
+    {
+      "id": "S196",
+      "number": 196,
+      "text": "Model changes are tested because they can change application behavior."
+    },
+    {
+      "id": "S197",
+      "number": 197,
+      "text": "Token and model spending have per-user, per-workflow, and overall controls appropriate to cost risk."
+    },
+    {
+      "id": "S198",
+      "number": 198,
+      "text": "Input length, file size, and context volume are bounded."
+    },
+    {
+      "id": "S199",
+      "number": 199,
+      "text": "Users cannot repeatedly trigger unbounded expensive AI jobs."
+    },
+    {
+      "id": "S200",
+      "number": 200,
+      "text": "AI errors are communicated as probabilistic outputs, not authoritative decisions, when uncertainty matters."
+    }
+  ]
+}

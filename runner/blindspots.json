@@ -1,0 +1,69 @@
+{
+  "_note": "Known things the gates cannot see. Printed on every run. This file exists because a limitation recorded in a README is prose, and prose gets forgotten — which is failure mechanism M4 in MANDATE.md. A blind spot that is not in output does not exist to the person reading output.",
+  "blindspots": [
+    {
+      "id": "BS-001",
+      "gate": "delete-allowlist",
+      "limitation": "SQL assembled into a variable on one line and executed on another is not detected.",
+      "why": "SQL patterns require an execution verb on the same line, to avoid flagging prose and log messages that merely contain the words DELETE FROM.",
+      "closes_with": "dataflow analysis, not a wider regex",
+      "severity": "medium"
+    },
+    {
+      "id": "BS-002",
+      "gate": "delete-allowlist",
+      "limitation": "A call to a generic delete helper is invisible, because the call site contains no SQL.",
+      "why": "Found in fapp-claudedev/feeds/sqlite_adapter.py: a delete(table, filters) utility. A future caller would read `adapter.delete(\"matters\", {...})` with no DELETE keyword anywhere on the line.",
+      "closes_with": "per-project declaration of project-specific deletion helpers, or call-graph analysis",
+      "severity": "high"
+    },
+    {
+      "id": "BS-003",
+      "gate": "silent-failure",
+      "limitation": "Outside Python, only provably empty catch blocks are detected.",
+      "why": "Python is analyzed with the AST and can distinguish a handler that logs from one that discards. Other languages fall back to a regex that can only recognise `catch {}` with certainty.",
+      "closes_with": "a real parser per language",
+      "severity": "medium"
+    },
+    {
+      "id": "BS-004",
+      "gate": "silent-failure",
+      "limitation": "A handler returning a meaningful default value is not flagged.",
+      "why": "Distinguishing a deliberate fallback from evasion requires reading intent, which is human judgment. Flagging every default would make the gate unusable.",
+      "closes_with": "nothing mechanical; this is a review question",
+      "severity": "low"
+    },
+    {
+      "id": "BS-005",
+      "gate": "*",
+      "limitation": "Documentation is never scanned. Markdown, text, and configuration prose pass through unexamined.",
+      "why": "The gates read source files only. PLAN.md, MANDATE.md and every other document in this repository have never been checked by anything.",
+      "closes_with": "a document gate, or an explicit decision that documents are out of scope",
+      "severity": "medium"
+    },
+    {
+      "id": "BS-006",
+      "gate": "*",
+      "limitation": "Test code is excluded from every gate.",
+      "why": "Deferred-work markers, swallowed exceptions, and row removal are all normal in tests, and flagging them trains the reader to ignore output.",
+      "closes_with": "opt-in coverage for gates where test-code violations would matter",
+      "severity": "low"
+    },
+    {
+      "id": "BS-007",
+      "gate": "*",
+      "limitation": "Coverage is 6 of 200 software controls and 0 of 150 website controls. A clean run means only that three gates found nothing.",
+      "why": "Phase 1 is in progress. The remaining controls are PLANNED, ARTIFACT, HUMAN, or UNCLASSIFIED — see the coverage report.",
+      "closes_with": "Phase 3",
+      "severity": "high"
+    },
+    {
+      "id": "BS-008",
+      "gate": "*",
+      "limitation": "The software classification in controls/classification.json disagrees with docs/human-judgment-controls.md on how many controls need human judgment: 33 versus roughly 70.",
+      "why": "classification.json was derived from PLAN.md's gate-family table, which groups controls into families and takes the family's dominant type. human-judgment-controls.md was derived control by control and is finer-grained. The coarser reading is the optimistic one.",
+      "closes_with": "control-by-control reconciliation; until then the human count is a lower bound, not a figure",
+      "severity": "high"
+    }
+  ]
+}
