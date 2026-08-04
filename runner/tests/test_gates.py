@@ -27,7 +27,8 @@ CONFIG_NAME = "spe.config.json"
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from spe.core import Finding, waived                              # noqa: E402
-from spe.gates import delete_allowlist, hollowness, silent_failure  # noqa: E402
+from spe.gates import (delete_allowlist, hollowness, module_size,  # noqa: E402
+                       silent_failure, test_gate_wired)
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -202,6 +203,149 @@ class TestWaiverSyntax(unittest.TestCase):
             "    except OSError:",
         ]
         self.assertFalse(waived(block, 2, "silent-failure"))
+
+
+class TestModuleSize(unittest.TestCase):
+    """Planted-failure tests for module-size.
+
+    Uses generated files rather than checked-in fixtures: an 1,800-line fixture would be
+    noise in the repository, and the property under test is purely the line count.
+    """
+
+    def setUp(self) -> None:
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _write(self, name: str, line_count: int, header: str = "") -> Path:
+        path = self.root / name
+        body = header + "\n".join(f"x = {i}" for i in range(line_count))
+        path.write_text(body, encoding="utf-8")
+        return path
+
+    def test_small_file_is_not_flagged(self) -> None:
+        path = self._write("small.py", 200)
+        self.assertEqual(module_size.scan(path, "small.py"), [])
+
+    def test_file_just_under_the_limit_is_not_flagged(self) -> None:
+        path = self._write("edge.py", module_size.MEDIUM_THRESHOLD - 1)
+        self.assertEqual(module_size.scan(path, "edge.py"), [])
+
+    def test_medium_file_is_flagged_medium(self) -> None:
+        path = self._write("mid.py", module_size.MEDIUM_THRESHOLD + 10)
+        findings = module_size.scan(path, "mid.py")
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0].severity, "medium")
+        self.assertEqual(findings[0].line, 1)
+
+    def test_very_large_file_is_flagged_high(self) -> None:
+        path = self._write("huge.py", module_size.HIGH_THRESHOLD + 10)
+        findings = module_size.scan(path, "huge.py")
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0].severity, "high")
+
+    def test_waiver_at_the_top_of_the_file_silences_it(self) -> None:
+        path = self._write(
+            "waived.py", module_size.HIGH_THRESHOLD + 10,
+            header="# spe:allow module-size — generated file, never edited by hand\n")
+        self.assertEqual(module_size.scan(path, "waived.py"), [])
+
+    def test_waiver_buried_deep_does_not_count(self) -> None:
+        """A whole-file waiver has to be visible to someone opening the file."""
+        path = self.root / "buried.py"
+        lines = [f"x = {i}" for i in range(module_size.HIGH_THRESHOLD + 10)]
+        lines[900] = "# spe:allow module-size — hidden nine hundred lines down"
+        path.write_text("\n".join(lines), encoding="utf-8")
+        self.assertEqual(len(module_size.scan(path, "buried.py")), 1)
+
+
+class TestTestGateWired(unittest.TestCase):
+    """Planted-failure tests for test-gate-wired — the blg-article-finderwriter failure."""
+
+    def setUp(self) -> None:
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        (self.root / "tests").mkdir()
+        (self.root / "tests" / "test_thing.py").write_text("def test_x():\n    pass\n",
+                                                           encoding="utf-8")
+
+    def tearDown(self) -> None:
+        self.tmp.cleanup()
+
+    def _package_json(self, scripts: dict) -> None:
+        (self.root / "package.json").write_text(
+            json.dumps({"name": "x", "scripts": scripts}), encoding="utf-8")
+
+    def _workflow(self, name: str, body: str) -> None:
+        wf = self.root / ".github" / "workflows"
+        wf.mkdir(parents=True, exist_ok=True)
+        (wf / name).write_text(body, encoding="utf-8")
+
+    def test_tests_exist_but_nothing_runs_them(self) -> None:
+        """The exact finderwriter shape: test files present, no test script."""
+        self._package_json({"start": "node run.js", "score": "node run.js"})
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertTrue(any("no command runs them" in f.message for f in findings))
+
+    def test_declared_test_script_satisfies_the_gate(self) -> None:
+        self._package_json({"start": "node run.js", "test": "node --test"})
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertFalse(any("no command runs them" in f.message for f in findings))
+
+    def test_ci_running_tests_satisfies_the_gate(self) -> None:
+        self._package_json({"start": "node run.js"})
+        self._workflow("ci.yml", "jobs:\n  t:\n    steps:\n      - run: pytest\n")
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertFalse(any("no command runs them" in f.message for f in findings))
+
+    def test_deploy_without_tests_is_flagged(self) -> None:
+        self._package_json({"test": "node --test"})
+        self._workflow("deploy.yml", "jobs:\n  d:\n    steps:\n      - run: rsync -a out/ server:/srv\n")
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertTrue(any("deploys but runs no tests" in f.message for f in findings))
+
+    def test_deploy_that_also_tests_is_not_flagged(self) -> None:
+        self._package_json({"test": "node --test"})
+        self._workflow("deploy.yml",
+                       "jobs:\n  d:\n    steps:\n      - run: npm test\n"
+                       "      - run: rsync -a out/ server:/srv\n")
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertFalse(any("deploys but runs no tests" in f.message for f in findings))
+
+    def test_repo_with_no_tests_at_all_is_silent_here(self) -> None:
+        """Absence of tests is control 86's problem, not this gate's. Do not double-report."""
+        (self.root / "tests" / "test_thing.py").unlink()
+        self._package_json({"start": "node run.js"})
+        findings = test_gate_wired.scan_repo(self.root)
+        self.assertFalse(any("no command runs them" in f.message for f in findings))
+
+
+class TestEveryRegisteredGateActuallyRuns(unittest.TestCase):
+    """DEFECT-002 regression.
+
+    Enablement used to be read from DEFAULT_CONFIG, which listed only the first three
+    gates. Registering a fourth left it dormant — while the coverage report, which reads
+    the registry, went on counting its controls as enforced. Claimed but not running is
+    exactly the failure this tool exists to catch, so it gets a test that fails the moment
+    a registered gate stops being reachable.
+    """
+
+    def test_default_config_does_not_gate_registration(self) -> None:
+        import tempfile
+        from spe.cli import run
+        from spe.core import load_config
+        from spe.gates import REGISTRY
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "x.py").write_text("x = 1\n", encoding="utf-8")
+            result = run(root, load_config(root), None, "test")
+            self.assertEqual(set(result.gates_run), set(REGISTRY),
+                             "a registered gate did not run under the default config")
 
 
 class TestExemptionAnchoring(unittest.TestCase):

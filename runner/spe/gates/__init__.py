@@ -9,13 +9,16 @@ anyone noticing — the same failure class the runner exists to catch.
 
 from __future__ import annotations
 
-from . import delete_allowlist, hollowness, silent_failure
+from . import (delete_allowlist, hollowness, module_size, silent_failure,
+               test_gate_wired)
 
 # Ordered most-consequential first, which is also the order findings are reported in.
 REGISTRY = {
     delete_allowlist.GATE_ID: delete_allowlist,
     silent_failure.GATE_ID: silent_failure,
+    test_gate_wired.GATE_ID: test_gate_wired,
     hollowness.GATE_ID: hollowness,
+    module_size.GATE_ID: module_size,
 }
 
 __all__ = ["REGISTRY"]

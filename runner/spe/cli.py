@@ -66,8 +66,13 @@ def _changed_lines(root: Path, base: str) -> dict[str, set[int]] | None:
 def run(root: Path, config: dict, changed: dict[str, set[int]] | None,
         mode: str) -> ScanResult:
     """Execute every enabled gate over the discovered files."""
-    enabled = [gate_id for gate_id, settings in config["gates"].items()
-               if settings.get("enabled", True) and gate_id in REGISTRY]
+    # The registry decides which gates exist; config may only disable one. Deriving the
+    # enabled set from the config instead meant a newly registered gate silently did not
+    # run until someone remembered to add it to DEFAULT_CONFIG — and the coverage report
+    # still counted its controls as enforced, because coverage reads the registry. A gate
+    # that is claimed but not running is the precise failure this tool exists to prevent.
+    enabled = [gate_id for gate_id in REGISTRY
+               if config["gates"].get(gate_id, {}).get("enabled", True)]
     # Exemptions are resolved per file against the nearest declaring config, not against
     # the scan root — see DEFECT-001 in core.configs_by_dir.
     configs = configs_by_dir(root)
