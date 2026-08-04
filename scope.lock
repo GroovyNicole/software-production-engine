@@ -1,0 +1,22 @@
+{
+  "_note": "Declares what the current work may touch. Checked with: python -m spe . --scope. A file changed outside these paths is a failure regardless of whether the change was a good idea — that judgment is the one being removed.",
+  "phase": "Phase 1 — gate layer foundation",
+  "authorized_by": "Nicole Dufrene",
+  "authorized_on": "2026-08-04",
+  "allowed_paths": [
+    "runner/*",
+    "runner/**",
+    "controls/*",
+    "controls/**",
+    "scope.lock"
+  ],
+  "explicitly_out_of_scope": [
+    "engineering-playbook/** — the 350-rule standard is read-only input; it may not be edited, renumbered, or added to",
+    "PLAN.md — the approved plan is not amended by the builder mid-phase",
+    "MANDATE.md, portfolioevidence.md, humanjudgmentcontrols.md, decisions/** — owner-approved records",
+    "any repository other than software-production-engine — fapp-claudedev, blg-website, blg-article-finderwriter, genealogy-database and faithstorm are read-only test material and are never repaired"
+  ],
+  "pending_authorization": [
+    ".github/** — needed to run the checks automatically on push. Not authorized yet."
+  ]
+}

@@ -140,6 +140,11 @@ def main(argv: list[str] | None = None) -> int:
                         help="exit 1 when findings exist (default is report-only, exit 0)")
     parser.add_argument("--quiet", action="store_true",
                         help="suppress the human summary; useful with --json")
+    parser.add_argument("--scope", action="store_true",
+                        help="check that changed files stayed inside scope.lock, "
+                             "then exit without scanning")
+    parser.add_argument("--scope-base", default="origin/main", metavar="REF",
+                        help="git ref to compare against for --scope (default origin/main)")
     parser.add_argument("--coverage", action="store_true",
                         help="report which controls are enforced and which are not, "
                              "then exit without scanning")
@@ -147,6 +152,13 @@ def main(argv: list[str] | None = None) -> int:
                         help="with --coverage, list N controls that have a gate specified "
                              "but not yet built")
     args = parser.parse_args(argv)
+
+    if args.scope:
+        from . import scope
+        repo_root = Path(args.path).resolve()
+        findings = scope.check(repo_root, args.scope_base)
+        print(scope.render(findings, repo_root))
+        return 1 if findings else 0
 
     if args.coverage:
         from .coverage import compute, render

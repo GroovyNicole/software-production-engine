@@ -324,6 +324,52 @@ class TestTestGateWired(unittest.TestCase):
         self.assertFalse(any("no command runs them" in f.message for f in findings))
 
 
+class TestNoInventedRules(unittest.TestCase):
+    """Every check must trace to a rule the owner already has.
+
+    On 2026-08-04 two checks were proposed that corresponded to no rule in the owner's
+    350-control standard. They were invented from observed project failures — reasonable
+    reasoning, and not the builder's call to make. That is judgment substituted for the
+    owner's, which is the failure mechanism M1 in MANDATE.md.
+
+    A check that cites no real control number fails this test and cannot ship. Adding a
+    genuinely new rule is still possible — it requires the owner to add it to the standard
+    first, at which point the control number exists and the check passes.
+
+    Non-numeric references (`rule-4` for the CLAUDE.md deletion rule, `M2` for a MANDATE
+    mechanism) are permitted alongside a real control number, but never instead of one.
+    """
+
+    def setUp(self) -> None:
+        corpus = Path(__file__).resolve().parents[2] / "controls" / "software.json"
+        if not corpus.exists():
+            self.skipTest("control corpus not extracted")
+        data = json.loads(corpus.read_text(encoding="utf-8"))
+        self.real = {c["number"] for c in data["controls"]}
+
+    def test_every_gate_cites_at_least_one_real_control(self) -> None:
+        from spe.gates import REGISTRY
+        for gate_id, module in REGISTRY.items():
+            cited = getattr(module, "CONTROLS", ())
+            numeric = {int(c) for c in cited if str(c).isdigit()}
+            self.assertTrue(
+                numeric,
+                f"gate '{gate_id}' cites no control number. A check that enforces no rule "
+                f"in the standard is the builder's opinion, not the owner's requirement.")
+            unknown = numeric - self.real
+            self.assertFalse(
+                unknown,
+                f"gate '{gate_id}' cites control(s) {sorted(unknown)}, which do not exist "
+                f"in the 200-control standard.")
+
+    def test_every_gate_states_its_failure_condition(self) -> None:
+        from spe.gates import REGISTRY
+        for gate_id, module in REGISTRY.items():
+            condition = getattr(module, "FAILURE_CONDITION", "")
+            self.assertTrue(condition.strip(),
+                            f"gate '{gate_id}' does not state what makes it fail")
+
+
 class TestEveryRegisteredGateActuallyRuns(unittest.TestCase):
     """DEFECT-002 regression.
 
