@@ -1,0 +1,16 @@
+{
+  "_note": "Config for scanning this repository. Every exclusion and exemption below states why, because an undocumented one is indistinguishable from quietly switching a check off.",
+  "exclude": [
+    "engineering-playbook/*"
+  ],
+  "_exclude_reasons": {
+    "engineering-playbook/*": "Vendored read-only input. It holds the owner's 350-rule standard and its template projects, which this repository consumes and is forbidden to edit — see scope.lock. Its 14 findings are real but belong to that project, not this one. Scanning vendored code here would fail this build over code nobody working in this repository is allowed to change."
+  },
+  "gates": {
+    "delete-allowlist": { "enabled": true, "exempt": [] },
+    "silent-failure": { "enabled": true, "exempt": [] },
+    "hollowness": { "enabled": true, "exempt": [] },
+    "module-size": { "enabled": true, "exempt": [] },
+    "test-gate-wired": { "enabled": true, "exempt": [] }
+  }
+}

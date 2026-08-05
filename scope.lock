@@ -8,7 +8,12 @@
     "runner/**",
     "controls/*",
     "controls/**",
+    ".github/*",
+    ".github/**",
     "scope.lock"
+  ],
+  "amendments": [
+    "2026-08-04 — .github/** added. Authorized by Nicole Dufrene so the checks run automatically on every push instead of only when someone remembers."
   ],
   "explicitly_out_of_scope": [
     "engineering-playbook/** — the 350-rule standard is read-only input; it may not be edited, renumbered, or added to",
@@ -17,6 +22,6 @@
     "any repository other than software-production-engine — fapp-claudedev, blg-website, blg-article-finderwriter, genealogy-database and faithstorm are read-only test material and are never repaired"
   ],
   "pending_authorization": [
-    ".github/** — needed to run the checks automatically on push. Not authorized yet."
+    "Branch protection on main requiring these checks to pass before a merge. Only the repository owner can set this; it is a GitHub account setting, not a file."
   ]
 }

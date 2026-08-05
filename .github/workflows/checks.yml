@@ -1,0 +1,84 @@
+name: checks
+
+# Runs the gate runner against this repository on every push and pull request.
+#
+# The point of this file is that the checks stop being voluntary. Before it existed they
+# only ran when someone chose to run them, which makes them advice — and advice is what
+# MANDATE.md says gets ignored. Here they run whether the builder wants them to or not.
+#
+# For them to actually BLOCK a merge, branch protection on `main` must additionally require
+# these jobs to pass. That is a repository setting only the owner can change; it is not
+# something this file can do for itself.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: gate tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      # Standard library only, by design — nothing to install, and no dependency of the
+      # checker can break the checker.
+      - name: Run planted-failure tests
+        working-directory: runner
+        run: python -m unittest discover -s tests -t . -v
+
+  self-scan:
+    name: runner passes its own gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # MANDATE.md 7.1: the runner is subject to its own gates. --blocking makes a finding
+      # in this repository fail the build rather than merely print.
+      - name: Scan this repository
+        working-directory: runner
+        run: python -m spe .. --blocking
+
+  scope:
+    name: changes stayed in scope
+    runs-on: ubuntu-latest
+    # Pull requests only: on a direct push there is no meaningful base to diff against,
+    # and reporting "in scope" from a comparison that did not happen would be exactly the
+    # false-clean result the runner exists to prevent.
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check against scope.lock
+        working-directory: runner
+        run: |
+          git -C .. fetch origin ${{ github.base_ref }} --depth=50
+          python -m spe .. --scope --scope-base origin/${{ github.base_ref }}
+
+  coverage:
+    name: report control coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # Never fails the build. Its job is to make the real number visible on every run so
+      # nobody has to take anyone's word for how much of the standard is enforced.
+      - name: Coverage
+        working-directory: runner
+        run: python -m spe .. --coverage
